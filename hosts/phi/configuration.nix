@@ -17,6 +17,7 @@
       PermitRootLogin = "no";
     };
   };
+  nixpkgs.config.permittedInsecurePackages = [ "libsoup-2.74.3" ];
   services.xserver = {
     exportConfiguration = true; # link /usr/share/X11/ properly
     enable = true;
