@@ -1,19 +1,21 @@
-{ pkgs, config, sources, lib, ... }:
+{ inputs, pkgs, config, sources, lib, ... }:
 let
   username = "zen";
   description = "To zen or not to Zen";
+  flow = import ../packages.nix { inherit pkgs; };
 in {
-  zen.data.users = [ username ];
   users.users.${username} = {
     inherit description;
 
+    packages = flow;
     shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "multimedia" ];
 
   };
-
+  imports = [ inputs.hjem.nixosModules.default ];
   # hjem
+  programs.fish.enable = true;
   hjem.users.${username} = {
     enable = true;
     user = username;
