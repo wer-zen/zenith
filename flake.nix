@@ -40,7 +40,7 @@
           system = system;
           specialArgs = {
             inherit inputs;
-            users = "zen";
+            users = [ "zen" ];
           };
           modules = [ ./hosts/phi/configuration.nix ./modules ./users ];
         };
