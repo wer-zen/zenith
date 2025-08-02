@@ -21,7 +21,7 @@ in {
     user = username;
     directory = config.users.users.${username}.home;
     clobberFiles = lib.mkForce true;
-
+    
     files = let
       matugen = config.programs.matugen;
       matugenTheme = matugen.theme.files;
