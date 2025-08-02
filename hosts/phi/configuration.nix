@@ -171,9 +171,10 @@
   environment.systemPackages = with pkgs; [
     neovim
     ly
-    home-manager
     inputs.matugen.packages.${system}.default
     inputs.zen-browser.packages."${system}".default
+    foot-term
+    kitty
   ];
 
   system.stateVersion = "25.05";

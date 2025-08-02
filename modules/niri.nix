@@ -5,7 +5,6 @@ with lib; {
   config = mkIf config.zen.programs.niri.enable {
     programs.niri = { enable = true; };
     qt.enable = true;
-    programs.dconf.enable = true;
 
     # dependencies .w.
     environment.systemPackages = [
