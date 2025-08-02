@@ -13,12 +13,6 @@ in {
 
   };
 
-  # define secrets
-  age.secrets.rexiesPass = {
-    file = ../secrets/secret1.age;
-    owner = username;
-  };
-
   # hjem
   hjem.users.${username} = {
     enable = true;
@@ -39,12 +33,10 @@ in {
     in {
 
       # fish
-      ".config/fish/themes".source = sources.rosep-fish + "/themes";
       ".config/fish/config.fish".source = ./dots/fish/config.fish;
 
       # bat
       ".config/bat/config".source = ./dots/bat/config;
-      ".config/bat/themes".source = sources.catp-bat + "/themes";
 
       # foot terminal
       ".config/foot/foot.ini".source = ./dots/foot/foot.ini;

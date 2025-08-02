@@ -42,7 +42,7 @@
             inherit inputs;
             users = [ "zen" ];
           };
-          modules = [ ./hosts/phi/configuration.nix ./modules ./users ];
+          modules = [ ./hosts/phi/configuration.nix ./modules ./users/zen.nix ];
         };
       };
 
