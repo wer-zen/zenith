@@ -11,10 +11,17 @@ with pkgs; [
   zathura
   gcc
   logseq
+<<<<<<< HEAD
   git
   ruby
   nodejs
   vue
+=======
+  ruby
+  nodejs
+  vue
+  chawan
+>>>>>>> 8923724c34fbc7f2af9a244bfd85f0faa5a9fa3e
   steam
   gnome-font-viewer
   yarn
@@ -24,6 +31,10 @@ with pkgs; [
   lazygit
   lua-language-server
   astro-language-server
+<<<<<<< HEAD
+=======
+  basilk
+>>>>>>> 8923724c34fbc7f2af9a244bfd85f0faa5a9fa3e
   tre-command
   wl-clipboard-rs
   pay-respects

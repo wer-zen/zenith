@@ -1,7 +1,6 @@
 { ... }:
 
 {
-<<<<<<< HEAD
   imports = [
     ./cli
     ./custom
@@ -15,7 +14,4 @@
     ./utilities
     ./ricing
   ];
-=======
-  imports = [ ./niri.nix ];
->>>>>>> 8923724c34fbc7f2af9a244bfd85f0faa5a9fa3e
 }
