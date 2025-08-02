@@ -8,7 +8,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.default
+    ./user-configuration.nix
   ];
   services.openssh = {
     enable = true;
@@ -33,7 +33,7 @@
   services.blueman.enable = true;
 
   programs.nix-ld.enable = true;
-
+  programs.dconf.enable = true;
   programs.nix-ld.libraries = with pkgs; [
 
     brotli

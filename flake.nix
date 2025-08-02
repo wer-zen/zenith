@@ -26,13 +26,12 @@
     };
   };
 
-  outputs = { self, durdraw, stylix, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, durdraw, stylix, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
       lib = nixpkgs.lib;
     in {
-      defaultPackage.${system} = home-manager.defaultPackage.${system};
 
       nixosConfigurations = {
 
