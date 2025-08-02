@@ -35,13 +35,14 @@
       defaultPackage.${system} = home-manager.defaultPackage.${system};
 
       nixosConfigurations = {
-        phi = lib.nixosSystem {
+
+        phi = nixpkgs.lib.nixosSystem {
           system = system;
           specialArgs = {
             inherit inputs;
             users = "zen";
           };
-          modules = [ ./hosts/phi/configuration.nix ./users ];
+          modules = [ ./hosts/phi/configuration.nix ./modules ./users ];
         };
       };
 
