@@ -6,7 +6,6 @@
     ./custom
     ./desktop
     ./development
-    ./wellbeing
     ./other
     ./terminal
     ./productivity
