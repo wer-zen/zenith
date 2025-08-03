@@ -18,7 +18,7 @@ in {
     xdg.configFile = {
       "quickshell" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/zenflow/quickshell";
+          "${config.xdg.homeDirectory}/zenflow/quickshell";
 
       };
     };
