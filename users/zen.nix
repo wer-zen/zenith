@@ -13,7 +13,7 @@ in {
     extraGroups = [ "networkmanager" "wheel" "multimedia" ];
 
   };
-  imports = [ inputs.hjem.nixosModules.default inputs.zenflow ];
+  imports = [ inputs.hjem.nixosModules.default ];
   # hjem
   programs.fish.enable = true;
   hjem.users.${username} = {
