@@ -1,8 +1,0 @@
-{ ... }:
-
-{
-  imports = [
-    ./flow-path.nix
-  ];
-
-}

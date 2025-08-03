@@ -1,5 +1,9 @@
 layout {
+	
+	zenout {
+
 	pane 
 	pane command="yazi"
 	pane 
+}
 }

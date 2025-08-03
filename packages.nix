@@ -17,6 +17,7 @@ with pkgs; [
   vue
   ruby
   nodejs
+  cheese
   vue
   chawan
   steam

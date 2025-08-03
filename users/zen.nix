@@ -31,7 +31,7 @@ in {
       # fish
       ".config/fish/config.fish".source = ./zendots/fish/config.fish;
       # quickshell
-      ".config/quickshell".source = zenflow;
+      ".config/quickshell".source = zenflow + "/quickshell";
 
       # bat
       ".config/bat/config".source = ./zendots/bat/config;
@@ -48,7 +48,7 @@ in {
       #zellij
       ".config/zellij/config.kdl".source = ./zendots/zellij/config.kdl;
       ".config/zellij/layouts/zenout.kdl".source =
-        ./zendots/zellij/themes/zenout.kdl;
+        ./zendots/zellij/lay/zenout.kdl;
       ".config/zellij/themes/zentheme.kdl".source =
         ./zendots/zellij/themes/zentheme.kdl;
     };

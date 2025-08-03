@@ -1,5 +1,0 @@
-{ ... }:
-
-{
-  imports = [ ./cava.nix ./themes ];
-}
