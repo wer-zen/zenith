@@ -13,7 +13,7 @@ in {
     extraGroups = [ "networkmanager" "wheel" "multimedia" ];
 
   };
-  imports = [ inputs.hjem.nixosModules.default ];
+  imports = [ inputs.hjem.nixosModules.default inputs.zenflow ];
   # hjem
   programs.fish.enable = true;
   hjem.users.${username} = {
@@ -23,6 +23,7 @@ in {
     clobberFiles = lib.mkForce true;
 
     files = let
+      zenflow = inputs.zenflow;
       matugen = config.modules.matugen.matugen;
       matugenTheme = matugen.theme.files;
 
@@ -30,7 +31,7 @@ in {
       # fish
       ".config/fish/config.fish".source = ./zendots/fish/config.fish;
       # quickshell
-      ".config/quickshell".source = ../zenflow;
+      ".config/quickshell".source = zenflow;
 
       # bat
       ".config/bat/config".source = ./zendots/bat/config;
