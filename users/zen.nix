@@ -21,40 +21,35 @@ in {
     user = username;
     directory = config.users.users.${username}.home;
     clobberFiles = lib.mkForce true;
-    
+
     files = let
-      matugen = config.modules.matugen;
+      matugen = config.modules.matugen.matugen;
       matugenTheme = matugen.theme.files;
 
-      qt6ct = let
-        from = [ "/home/zen" ];
-        to = [ "${config.users.users.${username}.home}" ];
-      in builtins.replaceStrings from to
-      (builtins.readFile ./zendots/qt6ct/qt6ct.conf);
-
     in {
-       # fish
-            ".config/fish/config.fish".source = ./zendots/fish/config.fish;
+      # fish
+      ".config/fish/config.fish".source = ./zendots/fish/config.fish;
+      # quickshell
+      ".config/quickshell".source = ../zenflow;
 
-            # bat
-            ".config/bat/config".source = ./zendots/bat/config;
+      # bat
+      ".config/bat/config".source = ./zendots/bat/config;
 
-            # foot terminal
-            ".config/foot/foot.ini".source = ./zendots/foot/foot.ini;
+      # foot terminal
+      ".config/foot/foot.ini".source = ./zendots/foot/foot.ini;
 
-            # hyprland
-            ".config/yazi/yazi.toml".source = ./zendots/yazi/yazi.toml;
-            ".config/yazi/keymap.toml".source = ./zendots/yazi/keymap.toml;
-            ".config/yazi/theme.toml".source = "${matugenTheme}/yazi-theme.toml";
+      # niri
+      ".config/niri/config.kdl".source = ./zendots/niri/niri.kdl;
 
-            # quickshell
-            ".config/quickshell".source = "../zenflow";
+      # discord
+      # ".config/equibopq/themes/midnight.css".source = "${matugenTheme}/discord-midnight.css";
 
-            # discord
-            ".config/equibopq/themes/midnight.css".source =
-              "${matugenTheme}/discord-midnight.css";
-      
+      #zellij
+      ".config/zellij/config.kdl".source = ./zendots/zellij/config.kdl;
+      ".config/zellij/layouts/zenout.kdl".source =
+        ./zendots/zellij/themes/zenout.kdl;
+      ".config/zellij/themes/zentheme.kdl".source =
+        ./zendots/zellij/themes/zentheme.kdl;
     };
   };
 }
-

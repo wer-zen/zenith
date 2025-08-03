@@ -1,0 +1,15 @@
+themes { // a node named "themes"
+    zenout { // a nested node inside the "themes" node indicating the theme name
+        // a list of nodes defining the UI components
+        ribbon_unselected {
+            base 0 0 0
+            background 255 153 0
+            emphasis_0 255 53 94
+            emphasis_1 255 255 255
+            emphasis_2 0 217 227
+            emphasis_3 255 0 255
+        }
+        // ...
+    }
+}
+

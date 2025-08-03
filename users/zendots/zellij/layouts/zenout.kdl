@@ -1,0 +1,5 @@
+layout {
+	pane 
+	pane command="yazi"
+	pane 
+}
