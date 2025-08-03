@@ -23,41 +23,37 @@ in {
     clobberFiles = lib.mkForce true;
     
     files = let
-      matugen = config.programs.matugen;
+      matugen = config.modules.matugen;
       matugenTheme = matugen.theme.files;
 
       qt6ct = let
         from = [ "/home/zen" ];
         to = [ "${config.users.users.${username}.home}" ];
       in builtins.replaceStrings from to
-      (builtins.readFile ./dots/qt6ct/qt6ct.conf);
+      (builtins.readFile ./zendots/qt6ct/qt6ct.conf);
 
     in {
-      /* # fish
-            ".config/fish/config.fish".source = ./dots/fish/config.fish;
+       # fish
+            ".config/fish/config.fish".source = ./zendots/fish/config.fish;
 
             # bat
-            ".config/bat/config".source = ./dots/bat/config;
+            ".config/bat/config".source = ./zendots/bat/config;
 
             # foot terminal
-            ".config/foot/foot.ini".source = ./dots/foot/foot.ini;
+            ".config/foot/foot.ini".source = ./zendots/foot/foot.ini;
 
             # hyprland
-            ".config/yazi/yazi.toml".source = ./dots/yazi/yazi.toml;
-            ".config/yazi/keymap.toml".source = ./dots/yazi/keymap.toml;
+            ".config/yazi/yazi.toml".source = ./zendots/yazi/yazi.toml;
+            ".config/yazi/keymap.toml".source = ./zendots/yazi/keymap.toml;
             ".config/yazi/theme.toml".source = "${matugenTheme}/yazi-theme.toml";
 
             # quickshell
             ".config/quickshell".source = "../zenflow";
-            # qt6ct
-            ".config/qt6ct/qt6ct.conf".text = qt6ct;
-            ".config/qt6ct/colors/matugen.conf".source =
-              "${matugenTheme}/qtct-colors.conf";
 
             # discord
             ".config/equibopq/themes/midnight.css".source =
               "${matugenTheme}/discord-midnight.css";
-      */
+      
     };
   };
 }

@@ -33,14 +33,24 @@ with pkgs; [
   wl-clipboard-rs
   pay-respects
   go
-inputs.quickshell.packages."${pkgs.system}".default
-      qt6.qtdeclarative
-      qt6.qtmultimedia
+  qt6.qtdeclarative
+  qt6.qtmultimedia
   python3
   opencode
   gnome-clocks
   zed-editor
   gnome-calculator
+
+  kitty
+  foot
+  oh-my-posh
+  tmux
+  zellij
+  yazi
+  equibop
+  eza
+  obsidian
+
   # >>MUSIC<<
   easyeffects
   cava

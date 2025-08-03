@@ -175,6 +175,7 @@
     neovim
     ly
     inputs.matugen.packages.${system}.default
+    inputs.quickshell.packages."${pkgs.system}".default
     inputs.zen-browser.packages."${system}".default
     kitty
   ];
