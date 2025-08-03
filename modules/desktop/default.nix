@@ -4,10 +4,7 @@
 {
   imports = [
     ./quickshell.nix
-    ./apps
-    ./music
     ../paths/flow-path.nix
-    ./common
     ./niri.nix
   ]; # global
   environment.systemPackages = [ pkgs.git pkgs.nixvim ];

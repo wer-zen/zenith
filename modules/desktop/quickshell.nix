@@ -8,17 +8,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      inputs.quickshell.packages."${pkgs.system}".default
-      pkgs.qt6.qtdeclarative
-      pkgs.qt6.qtmultimedia
-    ];
     qt.enable = true;
-
-    xdg.configFile = {
-      "quickshell" = {
-        source = config.lib.file.mkOutOfStoreSymlink
-          "${config.xdg.homeDirectory}/zenflow/quickshell";
 
       };
     };
