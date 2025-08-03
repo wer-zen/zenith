@@ -39,7 +39,7 @@ in {
       ".config/foot/foot.ini".source = ./zendots/foot/foot.ini;
 
       # niri
-      ".config/niri/config.kdl".source = ./zendots/niri/niri.kdl;
+      ".config/niri/config.kdl".source = ./zendots/niri/config.kdl;
 
       # discord
       # ".config/equibopq/themes/midnight.css".source = "${matugenTheme}/discord-midnight.css";
