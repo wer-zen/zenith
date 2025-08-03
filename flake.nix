@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    zenflow.url = "../zenflow"
+    zenflow = {
+      url = "github:quickshill-place/ZenFlow";
+      flake = false;
+    };
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";

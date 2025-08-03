@@ -318,7 +318,8 @@
         "nixpkgs": "nixpkgs_3",
         "quickshell": "quickshell",
         "stylix": "stylix",
-        "zen-browser": "zen-browser"
+        "zen-browser": "zen-browser",
+        "zenflow": "zenflow"
       }
     },
     "rust-overlay": {
@@ -544,6 +545,22 @@
       "original": {
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
+        "type": "github"
+      }
+    },
+    "zenflow": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754056050,
+        "narHash": "sha256-6v0s8W0ez1Usn1z5UBrYV/yN9LidpM0FaBoPmfCB2q8=",
+        "owner": "quickshill-place",
+        "repo": "ZenFlow",
+        "rev": "3c9749570757c87bd20c0691d374fbeb811eee54",
+        "type": "github"
+      },
+      "original": {
+        "owner": "quickshill-place",
+        "repo": "ZenFlow",
         "type": "github"
       }
     }
