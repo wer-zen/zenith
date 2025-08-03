@@ -6,7 +6,7 @@ in {
     enable = mkEnableOption "to enable, or not to enable";
   };
 
-  imports = [ inputs.stylix.homeModules.stylix ];
+  imports = [ inputs.stylix.nixosModules.stylix ];
 
   config = mkIf cfg.enable {
     stylix = {

@@ -1,21 +1,14 @@
 { pkgs, lib, config, ... }:
 with lib; {
-  options.zen.programs.niri.enable = mkEnableOption "To niri or not to niri";
+  options.zen.modules.niri.enable = mkEnableOption "To niri or not to niri";
 
-  config = mkIf config.zen.programs.niri.enable {
+  config = mkIf config.zen.modules.niri.enable {
     programs.niri = { enable = true; };
-    qt.enable = true;
-    programs.dconf.enable = true;
 
     # dependencies .w.
     environment.systemPackages = [
       pkgs.kdePackages.qt6ct
       pkgs.kdePackages.breeze
-      # utility
-      pkgs.wl-clipboard
-      pkgs.cliphist
-      pkgs.grim
-      pkgs.slurp
       pkgs.brightnessctl
       pkgs.hyprsunset
       pkgs.trashy
@@ -26,18 +19,9 @@ with lib; {
       pkgs.imv
       pkgs.wayfreeze
       pkgs.networkmanagerapplet
-      pkgs.yazi
       pkgs.ripdrag
-      # gnome keyring
       pkgs.seahorse
-      # quickshell dep
-      pkgs.quickshell
       pkgs.rembg
-      # supporting scripts
-      pkgs.scripts.kde-send
-      pkgs.scripts.gpurecording
-      pkgs.scripts.cowask
-      pkgs.scripts.npins-show
     ];
 
     # I could write a hypersunrise service to conflict but fuck it better to just
@@ -66,6 +50,5 @@ with lib; {
       "image/png" = [ "imv.desktop" ];
     };
 
-    services.gnome.gnome-keyring.enable = true;
   };
 }

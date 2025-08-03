@@ -7,7 +7,7 @@ in
 {
   options.dotfilesPath = mkOption {
     description = "Location of the dotfiles working copy";
-    default = "${config.home.homeDirectory}/zenflakes";
+    default = "${config.home.homeDirectory}/zenith";
     type = types.path;
     apply = toString;
   };

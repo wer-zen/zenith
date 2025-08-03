@@ -2,7 +2,6 @@
 
 with lib;
 let
-  # This is for convenience (see the config block)
   cfg = config.zen.modules.navigation.yazi;
 in {
   options.zen.modules.navigation.yazi = {

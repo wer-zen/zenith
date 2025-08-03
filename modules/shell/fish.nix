@@ -28,14 +28,7 @@
               git commit -m $argv[1]
               git push
             end
-            function hm 
-            	git add ~/zenflakes/ 
-      	git commit -am $argv[1]
-      	git push
-            	hm home-manager switch --flake ~/zenflakes/
-            end
-
-
+            
             abbr --add cnix sudo nvim ~/zenflakes/hosts/default/configuration.nix
             abbr --add upgrd sudo nixos-rebuild switch --flake ~/zenflakes/#default
             abbr --add c clear
