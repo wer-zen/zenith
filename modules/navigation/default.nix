@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./yazi.nix ];
+  imports = [ ];
 }
