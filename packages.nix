@@ -33,7 +33,9 @@ with pkgs; [
   wl-clipboard-rs
   pay-respects
   go
-
+inputs.quickshell.packages."${pkgs.system}".default
+      qt6.qtdeclarative
+      qt6.qtmultimedia
   python3
   opencode
   gnome-clocks

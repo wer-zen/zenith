@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ./user-configuration.nix
   ];
+
   services.openssh = {
     enable = true;
     settings = {
@@ -148,34 +149,11 @@
     pulse.enable = true;
   };
 
+  zen.modules = { ricing.stylix.enable = true; };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zen = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
-    modules = {
-      desktop.quickshell.enable = true;
-      desktop.music.cava.cava = {
-        enable = true;
-        settings = {
-          framerate = 90;
-          overshoot = -90;
-        };
-      };
-      desktop.apps.obsidian.enable = true;
-      development.vscode.enable = true;
-      development.zed-editor.enable = false;
-      navigation.yazi.enable = true;
-      terminal.tmux.tmux.enable = true;
-      terminal.foot.foot.enable = true;
-      terminal.kitty.kitty.enable = true;
-      terminal.helix.helix.enable = true;
-      terminal.zellij.zellij.enable = true;
-      terminal.oh-my-posh.oh-my-posh.enable = true;
-      ricing.stylix.enable = true;
-      ricing.durdraw.durdraw.enable = true;
-      ricing.matugen.matugen.enable = true;
-
-    };
 
   };
 
@@ -200,6 +178,8 @@
     inputs.zen-browser.packages."${system}".default
     kitty
   ];
+
+  qt.enable = true;
 
   system.stateVersion = "25.05";
 

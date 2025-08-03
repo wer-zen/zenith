@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./git.nix ./zed-editor.nix ./vscode.nix ];
+  imports = [ ./git.nix ];
 }
