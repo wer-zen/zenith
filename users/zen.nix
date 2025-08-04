@@ -14,7 +14,10 @@ in {
   };
   imports = [ inputs.hjem.nixosModules.default ];
 
-  zen.modules = { ricing.stylix.enable = true; };
+  zen.modules = {
+    ricing.stylix.enable = true;
+    ricing.matugen.matugen.enable = true;
+  };
 
   # hjem
   programs.fish.enable = true;
@@ -25,7 +28,7 @@ in {
     clobberFiles = lib.mkForce true;
 
     files = let
-      zenflow = inputs.zenflow;
+      zenflow = ../../zenflow;
       matugen = config.modules.matugen.matugen;
       matugenTheme = matugen.theme.files;
 
@@ -33,7 +36,7 @@ in {
       # fish
       ".config/fish/config.fish".source = ./zendots/fish/config.fish;
       # quickshell
-      ".config/quickshell".source = zenflow;
+      ".config/quickshell".source = zenflow + "/quickshell";
 
       # bat
       ".config/bat/config".source = ./zendots/bat/config;
