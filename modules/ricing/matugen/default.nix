@@ -1,5 +1,1 @@
-{ ... }:
-
-{
-  imports = [ ./matugen.nix ];
-}
+{ imports = [ ./matugen.nix ]; }
