@@ -72,7 +72,6 @@ with pkgs; [
   tree
   bat
   hyprpicker
-  gnome-software
 
   # >>IDK<<
   equibop
