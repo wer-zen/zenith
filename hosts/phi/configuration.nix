@@ -149,11 +149,10 @@
     pulse.enable = true;
   };
 
-  zen.modules = { ricing.stylix.enable = true; };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zen = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wh ./utilitieseel" ];
 
   };
 
@@ -175,8 +174,8 @@
     neovim
     ly
     inputs.matugen.packages.${system}.default
-    inputs.quickshell.packages."${pkgs.system}".default
     inputs.zen-browser.packages."${system}".default
+    inputs.quickshell.packages."${pkgs.system}".default
     kitty
   ];
 

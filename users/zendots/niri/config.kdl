@@ -159,13 +159,12 @@ layer-rule {
     place-within-backdrop true
 }
 binds {
-    // `niri msg action do-something`.
 
     Mod+Shift+Slash { show-hotkey-overlay; }
 
 
     Mod+Q repeat=false hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+Return hotkey-overlay-title="wofi" { spawn "qs" "-p" "/home/zen/zenflow/quickshell/Apps/applaunch/Applauncher.qml"; }
+    Mod+Return hotkey-overlay-title="wofi" { spawn "quickshell" "-p" "/home/zen/zenflow/quickshell/Apps/applaunch/Applauncher.qml"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: ly" { spawn "ly"; }
     Mod+Alt+J hotkey-overlay-title="Run quickshell" { spawn "quickshell"; }
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.

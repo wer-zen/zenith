@@ -5,15 +5,15 @@ if status is-interactive
             export OBSIDIAN_USE_WAYLAND=1
             export ZENFLOW_SETTINGS_DIR="$ZENFLOW_SETTINGS_DIR:/home/zen/zenflow/quickshell/Settings"
             export ZENFLOW_THEME_FILE="$ZENFLOW_THEME_FILE:/home/zen/zenflow/quickshell/Settings/Theme.json"
-
             export PATH="$PATH:/usr/lib/qt6/bin"
+
+            set -e QT_QPA_PLATFORMTHEME 
             set -x QS_NO_RELOAD_POPUP 1
             set -x PATH  "$HOME/.local/bin" $PATH
             zoxide init fish | source
             oh-my-posh init fish --config /home/zen/.config/ompsh/theme.toml | source
 
             function fish_greeting 
-              # arise, REMEMBER WHO YOU ARE! >>he did not say that<<
             end
 
             function gp
@@ -21,12 +21,7 @@ if status is-interactive
               git commit -m $argv[1]
               git push
             end
-            function hm 
-                git add ~/zenflakes/ 
-        git commit -am $argv[1]
-        git push
-                hm home-manager switch --flake ~/zenflakes/
-            end
+          
 
 
     abbr --add cnix sudo nvim ~/zenflakes/hosts/default/configuration.nix
@@ -35,6 +30,7 @@ if status is-interactive
     abbr --add clr clear
     abbr --add ff fastfetch
     abbr --add v NVIM_APPNAME=kick nvim
+    abbr --add nvim NVIM_APPNAME=kick nvim
     abbr --add ls exa --oneline --reverse --sort=type
     abbr --add srcy z src
     abbr --add astrov NVIM_APPNAME=astronvim_v5 nvim

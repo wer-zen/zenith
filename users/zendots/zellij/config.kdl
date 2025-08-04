@@ -1,7 +1,6 @@
 pane_frames false
+show_startup_tips false
 simplified_ui true
 default_layout "zenout"
 
-theme_dir "./themes" 
-layout_dir "./layouts"
 

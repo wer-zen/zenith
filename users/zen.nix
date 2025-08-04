@@ -11,9 +11,11 @@ in {
     shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "multimedia" ];
-
   };
   imports = [ inputs.hjem.nixosModules.default ];
+
+  zen.modules = { ricing.stylix.enable = true; };
+
   # hjem
   programs.fish.enable = true;
   hjem.users.${username} = {
@@ -31,7 +33,7 @@ in {
       # fish
       ".config/fish/config.fish".source = ./zendots/fish/config.fish;
       # quickshell
-      ".config/quickshell".source = zenflow + "/quickshell";
+      ".config/quickshell".source = zenflow;
 
       # bat
       ".config/bat/config".source = ./zendots/bat/config;
@@ -48,7 +50,7 @@ in {
       #zellij
       ".config/zellij/config.kdl".source = ./zendots/zellij/config.kdl;
       ".config/zellij/layouts/zenout.kdl".source =
-        ./zendots/zellij/lay/zenout.kdl;
+        ./zendots/zellij/layouts/zenout.kdl;
       ".config/zellij/themes/zentheme.kdl".source =
         ./zendots/zellij/themes/zentheme.kdl;
     };

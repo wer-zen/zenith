@@ -13,7 +13,7 @@ in {
       base16Scheme = ./themes/ayu-dark.yaml;
       enable = true;
       polarity = "dark";
-      image = ./Wallpapers/_star_wars.jpg;
+      image = inputs.wallpapers + "_black_tower.jpg";
 
       cursor = {
         name = "Bibata-Modern-Classic";
@@ -32,7 +32,7 @@ in {
         sizes = {
           popups = 10;
           applications = 10;
-          terminal = 13;
+          terminal = 16;
           desktop = 10;
         };
       };

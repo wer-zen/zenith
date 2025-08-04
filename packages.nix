@@ -9,6 +9,7 @@ with pkgs; [
   ghostty
   neofetch
   zathura
+  xwayland-satellite
   gcc
   logseq
   git
@@ -22,6 +23,7 @@ with pkgs; [
   chawan
   steam
   gnome-font-viewer
+  steam
   yarn
   blueman
   lua
@@ -34,8 +36,6 @@ with pkgs; [
   wl-clipboard-rs
   pay-respects
   go
-  qt6.qtdeclarative
-  qt6.qtmultimedia
   python3
   opencode
   gnome-clocks
@@ -92,11 +92,17 @@ with pkgs; [
   gpu-screen-recorder
 
   # >>QUICKSHILL<<
-  qt6Packages.qt5compat
-  libsForQt5.qt5.qtgraphicaleffects
+
   kdePackages.qtbase
   kdePackages.qtdeclarative
-
+  kdePackages.qtmultimedia
+  qt6Packages.qt5compat
+  kdePackages.networkmanager-qt
+  kdePackages.kirigami
+  libsForQt5.kirigami2
+  libsForQt5.networkmanager-qt
+  qt6.qtdeclarative
+  qt6.qtmultimedia
   # >>FISH<<
   fishPlugins.done
   fishPlugins.fzf-fish

@@ -5,7 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     zenflow = {
-      url = "github:quickshill-place/ZenFlow";
+      url = "git+file:///home/zen/zenflow/";
+      flake = false;
+    };
+
+    wallpapers = {
+      url = "github:wer-zen/Wallpapers";
       flake = false;
     };
 
