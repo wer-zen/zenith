@@ -25,9 +25,9 @@
       output_path = "~/yazi-theme.toml";
     };
 
-    fuzzel = {
-      input_path = "${./templates/fuzzel-colors.ini}";
-      output_path = "~/fuzzel-colors.ini";
+    cava = {
+      input_path = "${./templates/cava-colors}";
+      output_path = "~/config";
     };
 
     qtct = {

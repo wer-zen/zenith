@@ -100,7 +100,7 @@ let
     (builtins.fromJSON (builtins.readFile "${themePackage}/theme.json")).colors;
 in {
   imports = [ ./config.nix ];
-  options.programs.matugen = {
+  options.zen.modules.ricing.matugen.matugen = {
     enable = lib.mkEnableOption "Matugen declarative theming";
 
     package = lib.mkPackageOption pkgs "matugen" { } // { default = pkg; };
