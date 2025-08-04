@@ -1,0 +1,115 @@
+[config]
+reload_apps = true
+
+[config.wallpaper]
+command = "swww"
+arguments = [
+    "img",
+    "-t",
+    "any",
+    "--transition-duration",
+    "2",
+    "--transition-step",
+    "255",
+    "--transition-fps",
+    "90",
+  
+]
+set = true
+
+[templates.oh-my-posh]
+input_path = "./templates/oh-my-posh.toml"
+output_path = "~/.config/ompsh/theme.toml"
+
+[templates.yazi]
+input_path = './templates/yazi-colors.toml'
+output_path = '~/.config/yazi/theme.toml'
+
+[templates.midnight-discord]
+input_path = "./templates/midnight-discord.css"
+outputh_path = "~/.config/equibop/themes/midnight-colors.css"
+
+[templates.gtk3]
+inputh_path = "./templates/gtk-colors.css"
+output_path = "~/.config/gtk-3.0/gtk3-colors.css"
+
+[templates.gtk4]
+inputh_path = "./templates/gtk-colors.css"
+output_path = "~/.config/gtk-4.0/gtk4-colors.css"
+
+[templates.cava]
+input_path = "./templates/cava-colors"
+output_path = "~/.config/cava/config"
+
+[templates.quickshell-colors]
+input_path = "./templates/quickshell-colors.js"
+output_path = "../quickshell/colors.js"
+[templates.cava-colors]
+input_path = "./templates/cava-colors"
+output_path = "~/.config/cava/config"
+
+[templates.foot-colors]
+input_path = "./templates/foot-colors.ini"
+output_path = "~/.config/foot/colors.ini"
+
+[config.custom_colors.red]
+color = "#FF0000"
+blend = true
+
+[config.custom_colors.orange]
+color = "#FF4F00"
+blend = true
+
+[config.custom_colors.green]
+color = "#00FF00"
+blend = true
+
+[config.custom_colors.yellow]
+color = "#FFFF00"
+blend = true
+
+[config.custom_colors.blue]
+color = "#00AAFF"
+blend = true
+
+[config.custom_colors.magenta]
+color = "#9141ac"
+blend = true
+
+[config.custom_colors.cyan]
+color = "#00FFFF"
+blend = true
+
+[config.custom_colors.gray]
+color = "#333333"
+blend = true
+
+[config.custom_colors.pastel_blue]
+color = "#99c1f1"
+blend = true
+
+[config.custom_colors.pastel_orange]
+color = "#ffa348"
+blend = true
+
+[config.custom_colors.white]
+color = "#FFFFFFFF"
+blend = false
+
+[config.custom_colors.pastel_green]
+color = "#8ff0a4FF"
+blend = true
+
+[config.custom_colors.pastel_red]
+color = "#f66151"
+blend = true
+
+[config.custom_colors.pastel_magenta]
+color = "#dc8add"
+blend = true
+
+[config.custom_colors.pastel_mint_green]
+color = "#93ddc2"
+blend = true
+
+
