@@ -21,7 +21,7 @@
     };
 
     yazi = {
-      input_path = "${./templates/yazi-theme.toml}";
+      input_path = "${./templates/yazi-colors.toml}";
       output_path = "~/yazi-theme.toml";
     };
 
@@ -30,14 +30,10 @@
       output_path = "~/config";
     };
 
-    qtct = {
-      input_path = "${./templates/qtct-colors.conf}";
-      output_path = "~/qtct-colors.conf";
-    };
-
-    quickshell = {
-      input_path = "${./templates/quickshell-colors.qml}";
-      output_path = "~/quickshell-colors.qml";
-    };
+    /* quickshell = {
+         input_path = "${./templates/quickshell-colors.qml}";
+         output_path = "~/quickshell-colors.qml";
+       };
+    */
   };
 }
