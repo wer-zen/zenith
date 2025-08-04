@@ -1,5 +1,5 @@
 { ... }:
 
 {
-	  imports = [ ./stylix.nix ./matugen  ];
+  imports = [ ./stylix.nix ./matugen ];
 }
