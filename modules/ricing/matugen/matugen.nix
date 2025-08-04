@@ -2,8 +2,8 @@
 # https://github.com/InioX/matugen
 { pkgs, lib, config, ... }@args:
 let
-  cfg = config.zen.modules.matugen.matugen;
-  osCfg = args.osConfig.zen.modules.matugen.matugen or { };
+  cfg = config.zen.modules.ricing.matugen.matugen;
+  osCfg = args.osConfig.zen.modules.ricing.matugen.matugen or { };
 
   hexColorRegex = "#([0-9a-fA-F]{3}){1,2}";
   hexStrippedColorRegex = "([0-9a-fA-F]{3}){1,2}";
