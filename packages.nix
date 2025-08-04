@@ -9,7 +9,6 @@ with pkgs; [
   ghostty
   neofetch
   zathura
-  xwayland-satellite
   gcc
   logseq
   git
@@ -23,7 +22,6 @@ with pkgs; [
   chawan
   steam
   gnome-font-viewer
-  steam
   yarn
   blueman
   lua
