@@ -3,6 +3,7 @@ let
   username = "zen";
   description = "To zen or not to Zen";
   flow = import ../packages.nix { inherit pkgs; };
+  wallpapers = inputs.wallpapers;
 in {
   users.users.${username} = {
     inherit description;
@@ -16,7 +17,10 @@ in {
 
   zen.modules = {
     ricing.stylix.enable = true;
-    ricing.matugen.matugen.enable = true;
+    ricing.matugen.matugen = {
+      enable = true;
+      wallpaper = wallpapers + "_black_tower.jpg";
+    };
   };
 
   # hjem
@@ -28,7 +32,7 @@ in {
     clobberFiles = lib.mkForce true;
 
     files = let
-      zenflow = ../../zenflow;
+      zenflow = inputs.zenflow;
       matugen = config.modules.matugen.matugen;
       matugenTheme = matugen.theme.files;
 

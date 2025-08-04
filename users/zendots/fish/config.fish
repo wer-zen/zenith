@@ -25,7 +25,7 @@ if status is-interactive
 
 
     abbr --add cnix sudo nvim ~/zenflakes/hosts/default/configuration.nix
-    abbr --add upgrd sudo nixos-rebuild switch --flake ~/zenflakes/#default
+    abbr --add rb sudo nixos-rebuild switch --flake ~/zenith/#phi
     abbr --add c clear
     abbr --add clr clear
     abbr --add ff fastfetch
