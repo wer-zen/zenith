@@ -3,17 +3,18 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/NUR";
+
+    crush.url = "./modules/ai/crush";
 
     zenflow = {
-      url = "github:quickshill-place/ZenFlow";
+      url = "git+file:///home/zen/zenflow";
       flake = false;
     };
-
     wallpapers = {
-      url = "github:wer-zen/Wallpapers";
+      url = "git+file:///home/zen/Wallpapers";
       flake = false;
     };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,16 +28,14 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     hjem.url = "github:feel-co/hjem";
-
     quickshell = {
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, durdraw, stylix, nixpkgs, ... }@inputs:
+  outputs = { self, durdraw, stylix, nixpkgs, nur, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -51,7 +50,14 @@
             inherit inputs;
             users = [ "zen" ];
           };
-          modules = [ ./hosts/phi/configuration.nix ./modules ./users/zen.nix ];
+          modules = [
+            ./hosts/phi/configuration.nix
+            ./modules
+            ./users/zen.nix
+            nur.modules.nixos.default
+            nur.repos.charmbracelet.modules.crush
+            { programs.crush.enable = true; }
+          ];
         };
       };
 

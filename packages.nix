@@ -3,24 +3,37 @@
 with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
-
   # >>DEV<<
   rustup
   ghostty
+  gh
+  brave
+  rustlings
+  gnome-keyring
+  ollama
+
   neofetch
   zathura
+  os-prober
   gcc
   logseq
+  playerctl
   git
+  gnome-calendar
   ruby
+  vlc
+  scrcpy
+  brightnessctl
+  wallust
   nodejs
   vue
   ruby
+  ps_mem
   nodejs
   cheese
   vue
+  nushell
   chawan
-  steam
   gnome-font-viewer
   yarn
   blueman
@@ -39,7 +52,6 @@ with pkgs; [
   gnome-clocks
   zed-editor
   gnome-calculator
-
   kitty
   foot
   oh-my-posh
@@ -49,19 +61,15 @@ with pkgs; [
   equibop
   eza
   obsidian
-
   # >>MUSIC<<
   easyeffects
   cava
-
   # >>NAVIGATION<<
   fzf
-  ulauncher
   zoxide
   wofi
   eza
   nautilus
-
   # >>SYSTEM UTILITIES<<
   wget
   mission-center
@@ -72,12 +80,10 @@ with pkgs; [
   tree
   bat
   hyprpicker
-
   # >>IDK<<
   equibop
   swaynotificationcenter
   inkscape
-
   # >>WALLPAPER & CUSTOMIZATION & SCREENUTILS<<
   hyprshot
   grim
@@ -87,9 +93,7 @@ with pkgs; [
   slurp
   clock-rs
   gpu-screen-recorder
-
-  # >>QUICKSHILL<<
-
+  # >>QUICKSHILL - QT PACKAGES THAT MIGHT USE WEBKIT<<
   kdePackages.qtbase
   kdePackages.qtdeclarative
   kdePackages.qtmultimedia
@@ -100,6 +104,8 @@ with pkgs; [
   libsForQt5.networkmanager-qt
   qt6.qtdeclarative
   qt6.qtmultimedia
+  qtcreator
+  qt5.full
   # >>FISH<<
   fishPlugins.done
   fishPlugins.fzf-fish

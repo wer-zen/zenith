@@ -16,11 +16,11 @@ in {
   imports = [ inputs.hjem.nixosModules.default ];
 
   zen.modules = {
-    ricing.stylix.enable = true;
     ricing.matugen.matugen = {
       enable = true;
-      wallpaper = wallpapers + "_black_tower.jpg";
+      wallpaper = wallpapers + "/_star_wars.jpg";
     };
+    ai.crush.crush.enable = true;
   };
 
   # hjem
@@ -33,7 +33,7 @@ in {
 
     files = let
       zenflow = inputs.zenflow;
-      matugen = config.modules.matugen.matugen;
+      matugen = config.zen.modules.ricing.matugen.matugen;
       matugenTheme = matugen.theme.files;
 
     in {
@@ -46,7 +46,6 @@ in {
       ".config/bat/config".source = ./zendots/bat/config;
 
       # foot terminal
-      ".config/foot/foot.ini".source = ./zendots/foot/foot.ini;
 
       # niri
       ".config/niri/config.kdl".source = ./zendots/niri/config.kdl;
@@ -55,17 +54,12 @@ in {
       ".config/zellij/config.kdl".source = ./zendots/zellij/config.kdl;
       ".config/zellij/layouts/zenout.kdl".source =
         ./zendots/zellij/layouts/zenout.kdl;
-      ".config/zellij/themes/zentheme.kdl".source =
-        ./zendots/zellij/themes/zentheme.kdl;
 
       # matugen ->
 
       # discord
       ".config/equibop/themes/midnight.css".source =
         "${matugenTheme}/discord-midnight.css";
-
-      ".config/gtk3.0/colors.css".source = "${matugenTheme}/gtk3-colors.css";
-      ".config/gtk4.0/colors.css".source = "${matugenTheme}/gtk4-colors.css";
 
       ".config/yazi/yazi-theme.toml".source = "${matugenTheme}/yazi-theme.toml";
     };

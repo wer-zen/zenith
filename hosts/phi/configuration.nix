@@ -8,9 +8,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./user-configuration.nix
   ];
-
   services.openssh = {
     enable = true;
     settings = {
@@ -32,6 +30,7 @@
   hardware.bluetooth.powerOnBoot = true;
   services.flatpak.enable = true;
 
+  nixpkgs.config.allowUnfree = true;
   services.blueman.enable = true;
 
   programs.nix-ld.enable = true;
@@ -152,8 +151,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zen = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wh ./utilitieseel" ];
-
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 
   # Enable automatic login for the user.
@@ -163,9 +161,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   services.auto-cpufreq = { enable = true; };
 

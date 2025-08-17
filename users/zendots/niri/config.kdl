@@ -57,7 +57,6 @@ layout {
   
 }
 spawn-at-startup "quickshell";
-spawn-at-startup "swww-daemon";
 
 
 prefer-no-csd
@@ -120,9 +119,8 @@ window-rule {
 window-rule {
     match app-id="foot"
     open-floating true
-    min-width 960
-    min-height 600
-    default-floating-position x=376 y=234 relative-to="top-left"
+    min-width 853
+    min-height 533
 }
 
 layer-rule {
@@ -164,9 +162,12 @@ binds {
 
 
     Mod+Q repeat=false hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+Return hotkey-overlay-title="wofi" { spawn "quickshell" "-p" "/home/zen/zenflow/quickshell/Apps/applaunch/Applauncher.qml"; }
-    Mod+Alt+L hotkey-overlay-title="Lock the Screen: ly" { spawn "ly"; }
-    Mod+Alt+J hotkey-overlay-title="Run quickshell" { spawn "quickshell"; }
+    Mod+Return hotkey-overlay-title="App Launcher" { spawn "quickshell" "-p" "/home/zen/zenflow/quickshell/Modules/Integrated/IntegratedAppLauncher.qml"; }
+    Mod+Alt+Z hotkey-overlay-title="Browser" { spawn "zen-beta"; }
+    Mod+Alt+Q hotkey-overlay-title="Run quickshell" { spawn "qs" "-p" "/home/zen/zenflow/quickshell"; }
+    Mod+Alt+K hotkey-overlay-title="Kill quickshell" { spawn "killall" ".quickshell-wra"; }
+    Mod+Alt+R hotkey-overlay-title="Wofi" { spawn "wofi" "--show" "drun";}
+    Mod+Alt+S hotkey-overlay-title="Run quickshell" { spawn "swww-daemon"; }
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
@@ -177,6 +178,9 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    XF86MonBrightnessDown allow-when-locked=true {spawn "brightnessctl" "set" "10-";}
+    XF86MonBrightnessUp allow-when-locked=true {spawn "brightnessctl" "set" "+10";}
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
