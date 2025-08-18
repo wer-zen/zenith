@@ -11,7 +11,7 @@ with pkgs; [
   rustlings
   gnome-keyring
   ollama
-
+  nurl
   neofetch
   zathura
   os-prober

@@ -1,2 +1,0 @@
-{ imports = [ ./flake.nix ]; }
-

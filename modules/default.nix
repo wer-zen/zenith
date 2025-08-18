@@ -2,6 +2,6 @@
 
 {
 
-  imports = [ ./ricing ./ai ];
+  imports = [ ./ricing ];
 
 }
