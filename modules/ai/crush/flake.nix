@@ -1,6 +1,5 @@
 {
   description = "Crush is a tool for building software with AI";
-
   inputs = { nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; };
 
   outputs = { self, nixpkgs, ... }:

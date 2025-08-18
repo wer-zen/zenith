@@ -5,8 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
 
-    crush.url = "./modules/ai/crush";
-
     zenflow = {
       url = "git+file:///home/zen/zenflow";
       flake = false;
@@ -50,14 +48,7 @@
             inherit inputs;
             users = [ "zen" ];
           };
-          modules = [
-            ./hosts/phi/configuration.nix
-            ./modules
-            ./users/zen.nix
-            nur.modules.nixos.default
-            nur.repos.charmbracelet.modules.crush
-            { programs.crush.enable = true; }
-          ];
+          modules = [ ./hosts/phi/configuration.nix ./modules ./users/zen.nix ];
         };
       };
 

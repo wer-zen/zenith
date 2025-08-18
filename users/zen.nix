@@ -20,7 +20,6 @@ in {
       enable = true;
       wallpaper = wallpapers + "/_star_wars.jpg";
     };
-    ai.crush.crush.enable = true;
   };
 
   # hjem
