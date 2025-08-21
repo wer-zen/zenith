@@ -91,7 +91,7 @@ window-rule {
 
 window-rule {
     match at-startup=true app-id="zen-beta"
-    open-on-workspace "browser"
+    open-on-workspace "brow    readonly property HyprlandMonitor monitor: Hyprland.monitorFor(panelWindow.screen)ser"
 }
 
 
@@ -118,10 +118,18 @@ window-rule {
 
 window-rule {
     match app-id="foot"
+
+    default-window-height { proportion 0.5; }
+    default-column-width { proportion 0.5; }
+
     open-floating true
-    min-width 853
-    min-height 533
 }
+window-rule {
+    match app-id="Calculator"
+    open-floating true
+}
+
+
 
 layer-rule {
     match namespace="zenful-wall"
@@ -146,7 +154,7 @@ layer-rule {
 
 // Make workspaces four times smaller than normal in the overview.
 overview {
-    zoom 0.5
+    zoom 1
     workspace-shadow {
         off
     }

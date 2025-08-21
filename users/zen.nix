@@ -11,7 +11,7 @@ in {
     packages = flow;
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "multimedia" ];
+    extraGroups = [ "extra" "networkmanager" "wheel" "multimedia" ];
   };
   imports = [ inputs.hjem.nixosModules.default ];
 
@@ -21,7 +21,6 @@ in {
       wallpaper = wallpapers + "/_star_wars.jpg";
     };
   };
-
   # hjem
   programs.fish.enable = true;
   hjem.users.${username} = {
@@ -38,13 +37,9 @@ in {
     in {
       # fish
       ".config/fish/config.fish".source = ./zendots/fish/config.fish;
-      # quickshell
-      ".config/quickshell".source = zenflow + "/quickshell";
 
       # bat
       ".config/bat/config".source = ./zendots/bat/config;
-
-      # foot terminal
 
       # niri
       ".config/niri/config.kdl".source = ./zendots/niri/config.kdl;
@@ -53,12 +48,6 @@ in {
       ".config/zellij/config.kdl".source = ./zendots/zellij/config.kdl;
       ".config/zellij/layouts/zenout.kdl".source =
         ./zendots/zellij/layouts/zenout.kdl;
-
-      # matugen ->
-
-      # discord
-      ".config/equibop/themes/midnight.css".source =
-        "${matugenTheme}/discord-midnight.css";
 
       ".config/yazi/yazi-theme.toml".source = "${matugenTheme}/yazi-theme.toml";
     };

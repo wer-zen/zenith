@@ -1,0 +1,7 @@
+theme = "zentheme"
+
+[editor]
+line-number = "relative"
+mouse = false
+
+

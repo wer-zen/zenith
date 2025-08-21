@@ -3,14 +3,22 @@
 with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
+  just
   # >>DEV<<
   rustup
   ghostty
   gh
   brave
+  rapidfuzz-cpp
   rustlings
+  helix
   gnome-keyring
   ollama
+  kdePackages.qtshadertools
+  cmake
+  ninja
+  minizip
+  libqalculate
   nurl
   neofetch
   zathura

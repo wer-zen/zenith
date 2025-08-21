@@ -1,20 +1,20 @@
 # This block sets interactive and non-interactive status, but it's not needed as a separate block.
 # Keeping it here for reference.
 if status is-interactive
-    # do nothing
 end
 
 # Environment variables
 export OBSIDIAN_USE_WAYLAND=1
 export ZENFLOW_QUICKSHELL="$ZENFLOW_QUICKSHELL:/home/zen/zenflow/quickshell"
+export ZENFLOW_QUICKSHELL="$ZENFLOW_QUICKSHELL:/home/zen/zenflow/quickshell"
 export PATH="$PATH:/usr/lib/qt6/bin"
-
-# Fish shell-specific settings
-set -e QT_QPA_PLATFORMTHEME
+export QT_QPA_PLATFORMTHEME=gtk3
 set -x QS_NO_RELOAD_POPUP 1
 set -x PATH "$HOME/.local/bin" $PATH
-set -gx EDITOR nvim
-
+set -gx EDITOR NVIM_APPNAME=kick nvim
+set -gx PATH ~/.cargo/bin $PATH
+set -x GOPATH $HOME/go
+set -x PATH $PATH $GOPATH/bin
 # Initializing shell plugins and tools
 zoxide init fish | source
 oh-my-posh init fish --config /home/zen/.config/ompsh/theme.toml | source
@@ -29,16 +29,23 @@ function gp
     git push
 end
 
+function cri
+    cargo build --release
+    cargo install --path .
+end
+
 # Aliases and abbreviations
 abbr --add cnix sudo nvim ~/zenflakes/hosts/default/configuration.nix
 abbr --add rb sudo nixos-rebuild switch --flake ~/zenith/#phi
 abbr --add c clear
 abbr --add clr clear
 abbr --add ff fastfetch
-abbr --add v NVIM_APPNAME=kick nvim
-abbr --add nvim NVIM_APPNAME=kick nvim
+#abbr --add v NVIM_APPNAME=kick nvim
+abbr --add v nvim
+#abbr --add nvim NVIM_APPNAME=kick nvim
 abbr --add ls exa --oneline --reverse --sort=type
 abbr --add srcy z src
 abbr --add astrov NVIM_APPNAME=astronvim_v5 nvim
 abbr --add kick NVIM_APPNAME=kick nvim
 abbr --add chad NVIM_APPNAME=nvChad nvim
+abbr --add zf z flux q

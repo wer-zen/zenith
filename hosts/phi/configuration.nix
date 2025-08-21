@@ -52,7 +52,10 @@
     script =
       "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo     ";
   };
-
+  environment.variables = {
+    XCURSOR_THEME = "Bibata-Modern-Classic";
+    XCURSOR_SIZE = "12";
+  };
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -173,6 +176,8 @@
     inputs.zen-browser.packages."${system}".default
     inputs.quickshell.packages."${pkgs.system}".default
     kitty
+    bibata-cursors
+    foot
   ];
 
   qt.enable = true;

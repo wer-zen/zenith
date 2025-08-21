@@ -10,36 +10,8 @@ in {
 
   config = mkIf cfg.enable {
     stylix = {
-      base16Scheme = ./themes/ayu-dark.yaml;
       enable = true;
-      polarity = "dark";
-      image = inputs.wallpapers + "_black_tower.jpg";
 
-      cursor = {
-        name = "Bibata-Modern-Classic";
-        package = pkgs.bibata-cursors;
-        size = 12;
-      };
-      fonts = {
-        sansSerif = {
-          package = pkgs.nerd-fonts.zed-mono;
-          name = "ZedMono Nerd Font";
-        };
-        monospace = {
-          package = pkgs.nerd-fonts.zed-mono;
-          name = "ZedMono Nerd Font";
-        };
-        sizes = {
-          popups = 10;
-          applications = 10;
-          terminal = 16;
-          desktop = 10;
-        };
-      };
-      opacity = {
-        terminal = 0.85;
-        desktop = 0.85;
-      };
     };
   };
 }
