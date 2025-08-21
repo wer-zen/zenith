@@ -50,6 +50,7 @@ in {
         ./zendots/zellij/layouts/zenout.kdl;
 
       ".config/helix/config.toml".source = ./zendots/helix/config.toml;
+      ".config/helix/languages.toml".source = ./zendots/helix/languages.toml;
       ".config/yazi/yazi-theme.toml".source = "${matugenTheme}/yazi-theme.toml";
     };
   };

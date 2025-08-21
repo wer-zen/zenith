@@ -8,6 +8,7 @@ with pkgs; [
   rustup
   ghostty
   gh
+  rust-analyzer
   brave
   rapidfuzz-cpp
   rustlings
