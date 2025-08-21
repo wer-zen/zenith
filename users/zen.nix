@@ -49,6 +49,7 @@ in {
       ".config/zellij/layouts/zenout.kdl".source =
         ./zendots/zellij/layouts/zenout.kdl;
 
+      ".config/helix/config.toml".source = ./zendots/helix/config.toml;
       ".config/yazi/yazi-theme.toml".source = "${matugenTheme}/yazi-theme.toml";
     };
   };
