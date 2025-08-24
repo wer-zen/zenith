@@ -3,6 +3,7 @@ theme = "zentheme"
 [editor]
 line-number = "relative"
 mouse = false
-
-
+idle-timeout = 50
+completion-timeout = 5
+completion-trigger-len = 1
 

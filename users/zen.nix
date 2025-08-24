@@ -21,37 +21,46 @@ in {
       wallpaper = wallpapers + "/_star_wars.jpg";
     };
   };
+   programs.fish.enable = true;
   # hjem
-  programs.fish.enable = true;
+  hjem.extraModules = [
+        inputs.hjem-impure.hjemModules.default                                  # imports the hjemModule
+    ];
+    
   hjem.users.${username} = {
     enable = true;
     user = username;
     directory = config.users.users.${username}.home;
     clobberFiles = lib.mkForce true;
 
-    files = let
+    impure = {
+            enable = true;                                                      # enable hjem-impure
+            dotsDir = "${./zendots}";                                      # pure path to dotsFolder AS STRING
+            dotsDirImpure = "/home/zen/zenith/users/zendots";                  # impure absolute path to dots folder
+        };
+
+    xdg.config.files = let
       zenflow = inputs.zenflow;
       matugen = config.zen.modules.ricing.matugen.matugen;
       matugenTheme = matugen.theme.files;
-
+      dots = config.hjem.users.${username}.impure.dotsDir;
     in {
       # fish
-      ".config/fish/config.fish".source = ./zendots/fish/config.fish;
+      "fish/config.fish".source = dots + "/fish/config.fish";
 
       # bat
-      ".config/bat/config".source = ./zendots/bat/config;
+      "bat/config".source = dots + "/bat/config";
 
       # niri
-      ".config/niri/config.kdl".source = ./zendots/niri/config.kdl;
+      "niri/config.kdl".source = dots + "/niri/config.kdl";
 
       #zellij
-      ".config/zellij/config.kdl".source = ./zendots/zellij/config.kdl;
-      ".config/zellij/layouts/zenout.kdl".source =
-        ./zendots/zellij/layouts/zenout.kdl;
+      "zellij/config.kdl".source = dots + "/zellij/config.kdl";
+      "zellij/layouts/zenout.kdl".source =  dots + "/zellij/layouts/zenout.kdl";
 
-      ".config/helix/config.toml".source = ./zendots/helix/config.toml;
-      ".config/helix/languages.toml".source = ./zendots/helix/languages.toml;
-      ".config/yazi/yazi-theme.toml".source = "${matugenTheme}/yazi-theme.toml";
+      "helix/config.toml".source = dots + "/helix/config.toml";
+      "helix/languages.toml".source = dots + "/helix/languages.toml";
+      "yazi/yazi-theme.toml".source = "${matugenTheme}/yazi-theme.toml";
     };
   };
 }

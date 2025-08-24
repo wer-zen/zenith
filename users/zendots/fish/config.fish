@@ -41,7 +41,9 @@ abbr --add c clear
 abbr --add clr clear
 abbr --add ff fastfetch
 #abbr --add v NVIM_APPNAME=kick nvim
-abbr --add v nvim
+#abbr --add v nvim
+abbr --add v hx
+
 #abbr --add nvim NVIM_APPNAME=kick nvim
 abbr --add ls exa --oneline --reverse --sort=type
 abbr --add srcy z src

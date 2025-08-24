@@ -4,11 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
-
-    zenflow = {
-      url = "git+file:///home/zen/zenflow";
-      flake = false;
-    };
+        hjem-impure.url = "github:Rexcrazy804/hjem-impure";      
     wallpapers = {
       url = "git+file:///home/zen/Wallpapers";
       flake = false;

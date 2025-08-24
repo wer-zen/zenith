@@ -1,15 +1,26 @@
 { pkgs, ... }:
 
+
 with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
   just
+  inotify-tools 
   # >>DEV<<
+  biome
   rustup
   ghostty
   gh
-  rust-analyzer
+  warp-terminal
+  arc-browser
+  cmark-gfm
+  protobuf
+  greetd.qtgreet
   brave
+  kdePackages.qt6ct
+  kdePackages.qtsvg
+kdePackages.qtkeychain
+ kdePackages.layer-shell-qt
   rapidfuzz-cpp
   rustlings
   helix

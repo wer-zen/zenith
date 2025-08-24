@@ -6,6 +6,19 @@
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+
+output "eDP-1" {
+
+    scale 1.25
+    
+}
+
+output "DP-2" {
+     position x=1280 y=0
+     scale 1
+}
+
+
 input {
 
     focus-follows-mouse 
@@ -31,7 +44,12 @@ input {
     }
 
 }
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 16
 
+    hide-after-inactive-ms 1000
+}
 layout {
     gaps 16
     center-focused-column "always"
@@ -81,6 +99,11 @@ window-rule {
 }
 
 
+window-rule {
+    match title="Accedi - Account Google — Zen Browser"
+    open-floating true
+}
+
 
 window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
@@ -91,12 +114,12 @@ window-rule {
 
 window-rule {
     match at-startup=true app-id="zen-beta"
-    open-on-workspace "brow    readonly property HyprlandMonitor monitor: Hyprland.monitorFor(panelWindow.screen)ser"
+    open-on-workspace "browser"
 }
 
 
 window-rule {
-    geometry-corner-radius 16
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 
