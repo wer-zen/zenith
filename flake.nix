@@ -10,7 +10,7 @@
       flake = false;
     };
     noctalia = {
-      url = "git+file:///home/zen/Noctalia";
+      url = "github:/wer-zen/Noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     swiftfetch = {
