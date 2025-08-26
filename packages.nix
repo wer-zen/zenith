@@ -7,6 +7,7 @@ with pkgs; [
   just
   inotify-tools
   alejandra
+  nil
   # >>DEV<<
   typescript
   typescript-language-server

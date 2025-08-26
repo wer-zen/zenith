@@ -9,6 +9,10 @@
       url = "git+file:///home/zen/Wallpapers";
       flake = false;
     };
+    noctalia = {
+      url = "git+file:///home/zen/Noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     swiftfetch = {
       url = "github:ly-sec/swiftfetch";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,7 +38,7 @@
     };
   };
 
-  outputs = { self, durdraw, stylix, nixpkgs, nur, swiftfetch, ... }@inputs:
+  outputs = { self, durdraw, stylix, nixpkgs, nur, swiftfetch, noctalia, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -50,7 +54,12 @@
             inherit inputs;
             users = [ "zen" ];
           };
-          modules = [ ./hosts/phi/configuration.nix ./modules ./users/zen.nix  ];
+          modules = [ ./hosts/phi/configuration.nix ./modules ./users/zen.nix
+            ({ pkgs, ... }: {
+    environment.systemPackages = [
+     inputs.noctalia.packages.${pkgs.system}
+    ];
+  }) ];
         };
       };
 

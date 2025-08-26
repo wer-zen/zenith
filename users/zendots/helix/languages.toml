@@ -1,4 +1,9 @@
 
+
+[[language]]
+name = "nix"
+language-servers = [ "nil" ]
+formatter = [ "alejandra" ]
 [language-server.gopls]
 command = "gopls"
 args = ["-logfile=/tmp/gopls.log",  "serve"]
