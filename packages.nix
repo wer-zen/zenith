@@ -5,14 +5,17 @@ with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
   just
-  inotify-tools 
+  inotify-tools
+  alejandra
   # >>DEV<<
+  typescript
+  typescript-language-server
   biome
   rustup
   ghostty
   gh
   warp-terminal
-  arc-browser
+  prettier
   cmark-gfm
   protobuf
   greetd.qtgreet

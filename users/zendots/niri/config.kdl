@@ -198,7 +198,7 @@ binds {
     Mod+Alt+Q hotkey-overlay-title="Run quickshell" { spawn "qs" "-p" "/home/zen/zenflow/quickshell"; }
     Mod+Alt+K hotkey-overlay-title="Kill quickshell" { spawn "killall" ".quickshell-wra"; }
     Mod+Alt+R hotkey-overlay-title="Wofi" { spawn "wofi" "--show" "drun";}
-    Mod+Alt+S hotkey-overlay-title="Run quickshell" { spawn "swww-daemon"; }
+    Mod+Alt+D hotkey-overlay-title="Run quickshell v2" { spawn "qs" "-p" "/home/zen/zenflux/Quickshell"; }
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }

@@ -13,7 +13,8 @@
       url = "github:ly-sec/swiftfetch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
+
+        zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -39,7 +40,7 @@
       pkgs = import nixpkgs { inherit system; };
       lib = nixpkgs.lib;
     in {
-      packages = { inherit (swiftfetch.packages.${system}) swiftfetch; };
+      packages = {  };
 
       nixosConfigurations = {
 
@@ -49,7 +50,7 @@
             inherit inputs;
             users = [ "zen" ];
           };
-          modules = [ ./hosts/phi/configuration.nix ./modules ./users/zen.nix ];
+          modules = [ ./hosts/phi/configuration.nix ./modules ./users/zen.nix  ];
         };
       };
 
