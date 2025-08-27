@@ -360,16 +360,16 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1756209072,
-        "narHash": "sha256-ebG7SIj/SqK4QIPbxl+QMohRYX+rBgJb58y+sHheJnU=",
-        "owner": "wer-zen",
-        "repo": "Noctalia",
-        "rev": "c2ca05b11764c5510ad6908cd4eadfad01b7ac4c",
+        "lastModified": 1756226327,
+        "narHash": "sha256-ynYqiiqGnihtyHjMqX5UUoeE+FDF34hInF/+l70KKjI=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "rev": "57a8f5f0b3bb8ba364ac61157d38ddc2bee87b88",
         "type": "github"
       },
       "original": {
-        "owner": "wer-zen",
-        "repo": "Noctalia",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
         "type": "github"
       }
     },

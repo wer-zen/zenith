@@ -4,13 +4,13 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
-        hjem-impure.url = "github:Rexcrazy804/hjem-impure";      
+    hjem-impure.url = "github:Rexcrazy804/hjem-impure";
     wallpapers = {
       url = "git+file:///home/zen/Wallpapers";
       flake = false;
     };
     noctalia = {
-      url = "github:/wer-zen/Noctalia";
+      url = "github:/noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     swiftfetch = {
@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-        zen-browser = {
+    zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -38,30 +38,29 @@
     };
   };
 
-  outputs = { self, durdraw, stylix, nixpkgs, nur, swiftfetch, noctalia, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-      lib = nixpkgs.lib;
-    in {
-      packages = {  };
-
-      nixosConfigurations = {
-
-        phi = nixpkgs.lib.nixosSystem {
-          system = system;
-          specialArgs = {
-            inherit inputs;
-            users = [ "zen" ];
-          };
-          modules = [ ./hosts/phi/configuration.nix ./modules ./users/zen.nix
-            ({ pkgs, ... }: {
-    environment.systemPackages = [
-     inputs.noctalia.packages.${pkgs.system}
-    ];
-  }) ];
+  outputs = {
+    self,
+    durdraw,
+    stylix,
+    nixpkgs,
+    nur,
+    swiftfetch,
+    noctalia,
+    ...
+  } @ inputs: {
+    nixosConfigurations = {
+      phi = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          users = ["zen"];
         };
-      };
 
+        modules = [
+          ./hosts/phi/configuration.nix
+          ./modules
+          ./users/zen.nix
+        ];
+      };
     };
+  };
 }

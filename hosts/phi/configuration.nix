@@ -1,10 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -16,7 +18,7 @@
       PermitRootLogin = "no";
     };
   };
-  nixpkgs.config.permittedInsecurePackages = [ "libsoup-2.74.3" ];
+  nixpkgs.config.permittedInsecurePackages = ["libsoup-2.74.3"];
   services.xserver = {
     exportConfiguration = true; # link /usr/share/X11/ properly
     enable = true;
@@ -38,19 +40,18 @@
   nixpkgs.config.allowUnfree = true;
   services.blueman.enable = true;
 
+  security.sudo.wheelNeedsPassword = false;
   programs.nix-ld.enable = true;
   programs.dconf.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-
     brotli
     glib
   ];
 
   systemd.services.flatpak-repo = {
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.flatpak ];
-    script =
-      "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo     ";
+    wantedBy = ["multi-user.target"];
+    path = [pkgs.flatpak];
+    script = "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo     ";
   };
   environment.variables = {
     XCURSOR_THEME = "Bibata-Modern-Classic";
@@ -67,12 +68,10 @@
     enable = true;
     config.common.default = "gtk";
     xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-
+    extraPortals = with pkgs; [xdg-desktop-portal-gtk];
   };
 
   environment.sessionVariables = {
-
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
   };
@@ -89,7 +88,7 @@
     '';
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   networking.hostName = "flow"; # Define your hostname.
   # Enable networking
@@ -102,7 +101,7 @@
     enableDefaultPackages = true;
     fontconfig = {
       enable = true;
-      defaultFonts.monospace = [ "nerd-fonts.jetbrains-mono" ];
+      defaultFonts.monospace = ["nerd-fonts.jetbrains-mono"];
     };
     packages = with pkgs; [
       fira-sans
@@ -155,7 +154,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zen = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   # Enable automatic login for the user.
@@ -166,7 +165,7 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  services.auto-cpufreq = { enable = true; };
+  services.auto-cpufreq = {enable = true;};
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
@@ -175,6 +174,7 @@
     inputs.matugen.packages.${system}.default
     inputs.zen-browser.packages."${system}".default
     inputs.quickshell.packages."${pkgs.system}".default
+    inputs.noctalia.packages.${system}
     kitty
     bibata-cursors
     foot
@@ -183,5 +183,4 @@
   qt.enable = true;
 
   system.stateVersion = "25.05";
-
 }

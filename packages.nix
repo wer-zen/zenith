@@ -1,13 +1,14 @@
-{ pkgs, ... }:
-
-
+{pkgs, ...}:
 with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
   just
   inotify-tools
   alejandra
+  markdown-oxide
   nil
+  jq
+  rembg
   # >>DEV<<
   typescript
   typescript-language-server
@@ -23,8 +24,8 @@ with pkgs; [
   brave
   kdePackages.qt6ct
   kdePackages.qtsvg
-kdePackages.qtkeychain
- kdePackages.layer-shell-qt
+  kdePackages.qtkeychain
+  kdePackages.layer-shell-qt
   rapidfuzz-cpp
   rustlings
   helix
