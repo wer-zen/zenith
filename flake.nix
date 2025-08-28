@@ -45,7 +45,6 @@
     nixpkgs,
     nur,
     swiftfetch,
-    noctalia,
     ...
   } @ inputs: {
     nixosConfigurations = {

@@ -9,6 +9,7 @@ with pkgs; [
   nil
   jq
   rembg
+  notify-desktop
   # >>DEV<<
   typescript
   typescript-language-server

@@ -1,8 +1,14 @@
-{ inputs, pkgs, config, sources, lib, ... }:
-let
+{
+  inputs,
+  pkgs,
+  config,
+  sources,
+  lib,
+  ...
+}: let
   username = "zen";
   description = "To zen or not to Zen";
-  flow = import ../packages.nix { inherit pkgs; };
+  flow = import ../packages.nix {inherit pkgs;};
   wallpapers = inputs.wallpapers;
 in {
   users.users.${username} = {
@@ -11,9 +17,9 @@ in {
     packages = flow;
     shell = pkgs.fish;
     isNormalUser = true;
-    extraGroups = [ "extra" "networkmanager" "wheel" "multimedia" ];
+    extraGroups = ["extra" "networkmanager" "wheel" "multimedia"];
   };
-  imports = [ inputs.hjem.nixosModules.default ];
+  imports = [inputs.hjem.nixosModules.default];
 
   zen.modules = {
     ricing.matugen.matugen = {
@@ -21,12 +27,12 @@ in {
       wallpaper = wallpapers + "/_star_wars.jpg";
     };
   };
-   programs.fish.enable = true;
+  programs.fish.enable = true;
   # hjem
   hjem.extraModules = [
-        inputs.hjem-impure.hjemModules.default                                  # imports the hjemModule
-    ];
-    
+    inputs.hjem-impure.hjemModules.default # imports the hjemModule
+  ];
+
   hjem.users.${username} = {
     enable = true;
     user = username;
@@ -34,10 +40,10 @@ in {
     clobberFiles = lib.mkForce true;
 
     impure = {
-            enable = true;                                                      # enable hjem-impure
-            dotsDir = "${./zendots}";                                      # pure path to dotsFolder AS STRING
-            dotsDirImpure = "/home/zen/zenith/users/zendots";                  # impure absolute path to dots folder
-        };
+      enable = true; # enable hjem-impure
+      dotsDir = "${./zendots}"; # pure path to dotsFolder AS STRING
+      dotsDirImpure = "/home/zen/zenith/users/zendots"; # impure absolute path to dots folder
+    };
 
     xdg.config.files = let
       zenflow = inputs.zenflow;
@@ -56,7 +62,7 @@ in {
 
       #zellij
       "zellij/config.kdl".source = dots + "/zellij/config.kdl";
-      "zellij/layouts/zenout.kdl".source =  dots + "/zellij/layouts/zenout.kdl";
+      "zellij/layouts/zenout.kdl".source = dots + "/zellij/layouts/zenout.kdl";
 
       "helix/config.toml".source = dots + "/helix/config.toml";
       "helix/languages.toml".source = dots + "/helix/languages.toml";
