@@ -4,6 +4,8 @@ if status is-interactive
 end
 
 # Environment variables
+
+fish_add_path /home/zen/.spicetify
 export OBSIDIAN_USE_WAYLAND=1
 export ZENFLOW_QUICKSHELL="$ZENFLOW_QUICKSHELL:/home/zen/zenflow/quickshell"
 export ZENFLOW_QUICKSHELL="$ZENFLOW_QUICKSHELL:/home/zen/zenflow/quickshell"
