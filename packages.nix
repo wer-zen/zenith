@@ -2,6 +2,10 @@
 with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
+  rust-analyzer
+  anki-bin
+  discord
+  discordo
   just
   inotify-tools
   alejandra
