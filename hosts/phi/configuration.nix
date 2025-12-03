@@ -20,6 +20,14 @@
   };
   nixpkgs.config.permittedInsecurePackages = ["qtwebengine-5.15.19" "libsoup-2.74.3"];
 
+  programs.wayfire = {
+    enable = true;
+    plugins = with pkgs.wayfirePlugins; [
+      wcm
+      wf-shell
+      wayfire-plugins-extra
+    ];
+  };
   powerManagement.powertop.enable = true;
   services.auto-cpufreq.settings = {
     battery = {
@@ -207,6 +215,7 @@
     inputs.zen-browser.packages."${system}".default
     inputs.quickshell.packages."${pkgs.system}".default
     inputs.noctalia.packages.${system}.default
+    inputs.affinity-nix.packages.x86_64-linux.v3
     bibata-cursors
     foot
   ];

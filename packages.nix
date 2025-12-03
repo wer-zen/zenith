@@ -2,6 +2,7 @@
 with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
+  claude-code
   rust-analyzer
   anki-bin
   discord
