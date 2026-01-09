@@ -103,8 +103,6 @@
     xwayland.enable = true;
   };
 
-  programs.niri.enable = true;
-
   xdg.portal = {
     enable = true;
     config.common.default = "gtk";
@@ -204,7 +202,7 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
+  programs.niri.enable = true;
   services.auto-cpufreq = {enable = true;};
 
   # List packages installed in system profile. To search, run:

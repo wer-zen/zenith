@@ -9,6 +9,8 @@
       url = "git+file:///home/zen/Wallpapers";
       flake = false;
     };
+
+    niri.url = "github:yalter/niri";
     vicinae.url = "github:vicinaehq/vicinae";
     noctalia = {
       url = "github:/noctalia-dev/noctalia-shell";

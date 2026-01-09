@@ -2,6 +2,9 @@
 with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
+  vencord
+  cargo-generate
+  clang-tools
   rust-analyzer
   anki-bin
   discord

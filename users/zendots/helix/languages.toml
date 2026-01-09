@@ -1,3 +1,7 @@
+[[language]]
+name = "cpp"
+language-servers = ["clangd"]
+formatter = ["clangd"]
 
 [[language]]
 name = "markdown"
