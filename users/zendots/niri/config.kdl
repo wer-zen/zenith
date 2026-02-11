@@ -82,6 +82,7 @@ layout {
 spawn-at-startup "zen-beta"
 spawn-at-startup "equibop"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "qs -p /home/zen/zenflux/Quickshell"
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
@@ -193,18 +194,13 @@ binds {
 
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-
+    Mod+E hotkey-overlay-title="Nautilus" { spawn "nautilus"; }
     Mod+Q repeat=false hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+Return hotkey-overlay-title="App Launcher" { spawn "quickshell" "-p" "/home/zen/zenflow/quickshell/Modules/Integrated/IntegratedAppLauncher.qml"; }
     Mod+W { toggle-overview; }
     Mod+Alt+Z hotkey-overlay-title="Browser" { spawn "zen-beta"; }
-    Mod+Alt+Q hotkey-overlay-title="Run quickshell" { spawn "qs" "-p" "/home/zen/zenflow/quickshell"; }
     Mod+Alt+K hotkey-overlay-title="Kill quickshell" { spawn "killall" ".quickshell-wra"; }
+    Mod+Return hotkey-overlay-title="Wofi" { spawn "wofi" "--show" "drun";}
     Mod+Alt+R hotkey-overlay-title="Wofi" { spawn "wofi" "--show" "drun";}
-    Mod+Alt+D repeat=false hotkey-overlay-title="Run quickshell v2" { spawn "qs" "-p" "/home/zen/zenflux/Quickshell"; }
-    // You can also use a shell. Do this if you need pipes, multiple commands, etc.
-    // Note: the entire command goes as a single argument in the end.
-    Mod+Alt+T { spawn "bash" "-c" "notify-desktop test 1 "; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
@@ -215,8 +211,6 @@ binds {
     XF86MonBrightnessUp allow-when-locked=true {spawn "brightnessctl" "set" "+10";}
 
     XF86Calculator allow-when-locked=false { spawn "gnome-calculator";}
-
-
 
     Mod+C { close-window; }
 
@@ -238,12 +232,6 @@ binds {
     Mod+Ctrl+K     { move-window-up; }
     Mod+Ctrl+L     { move-column-right; }
 
-
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
-
     Mod+Shift+Left  { focus-monitor-left; }
     Mod+Shift+Down  { focus-monitor-down; }
     Mod+Shift+Up    { focus-monitor-up; }
@@ -253,39 +241,6 @@ binds {
     Mod+Shift+K     { focus-monitor-up; }
     Mod+Shift+L     { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
-
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U         { move-column-to-workspace-down; }
-    Mod+Ctrl+I         { move-column-to-workspace-up; }
-
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
-    // ...
-
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
-
-    // You can bind mouse wheel scroll ticks using the following syntax.
-    // These binds will change direction based on the natural-scroll setting.
-    //
-    // To avoid scrolling through workspaces really fast, you can use
-    // the cooldown-ms property. The bind will be rate-limited to this value.
-    // You can set a cooldown on any bind, but it's most useful for the wheel.
     Mod+WheelScrollDown      cooldown-ms=0 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=0 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollDown cooldown-ms=0 { move-column-to-workspace-down; }
@@ -324,30 +279,15 @@ binds {
     Mod+Ctrl+9 { move-column-to-workspace 9; }
     
     Mod+Tab { focus-workspace-previous; }
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
-    Mod+Comma  { consume-window-into-column; }
-    Mod+Period { expel-window-from-column; }
-    Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
-    Mod+Ctrl+F { expand-column-to-available-width; }
     Mod+T { center-column; }
-    Mod+Ctrl+C { center-visible-columns; }
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
-    Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Minus { set-column-width "-5%"; }
+    Mod+Equal { set-column-width "+5%"; }
+    Mod+Shift+Minus { set-window-height "-5%"; }
+    Mod+Shift+Equal { set-window-height "+5%"; }
     Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
     Print { screenshot; }
-    Mod+Alt+X { screenshot;}
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Alt+X { screenshot-screen;}
     Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
-    Mod+Shift+P { power-off-monitors; }
 }

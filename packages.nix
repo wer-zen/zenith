@@ -2,6 +2,22 @@
 with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
+  at-spi2-atk
+  atkmm
+  cairo
+  gdk-pixbuf
+  glib
+  gtk3
+  harfbuzz
+  librsvg
+  libsoup_3
+  pango
+  webkitgtk_4_1
+  openssl
+  pkg-config
+  trunk
+  cargo-tauri
+  zip
   vencord
   cargo-generate
   clang-tools
@@ -47,6 +63,7 @@ with pkgs; [
   nurl
   neofetch
   zathura
+  zathura-pdf-mupdf
   os-prober
   gcc
   logseq
