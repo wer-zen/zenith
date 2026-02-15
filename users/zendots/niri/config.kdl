@@ -82,7 +82,7 @@ layout {
 spawn-at-startup "zen-beta"
 spawn-at-startup "equibop"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "qs -p /home/zen/zenflux/Quickshell"
+spawn-at-startup "qs -c /home/zen/zenflux/Quickshell"
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
@@ -201,7 +201,7 @@ binds {
     Mod+Alt+K hotkey-overlay-title="Kill quickshell" { spawn "killall" ".quickshell-wra"; }
     Mod+Return hotkey-overlay-title="Wofi" { spawn "wofi" "--show" "drun";}
     Mod+Alt+R hotkey-overlay-title="Wofi" { spawn "wofi" "--show" "drun";}
-
+    Mod+D repeat=false hotkey-overlay-title="Run quickshell v2" { spawn "qs" "-p" "/home/zen/zenflux/Quickshell"; }     
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }

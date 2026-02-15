@@ -63,7 +63,8 @@ with pkgs; [
   nurl
   neofetch
   zathura
-  zathura-pdf-mupdf
+  zathuraPkgs.zathura_core
+  zathuraPkgs.zathura_pdf_mupdf
   os-prober
   gcc
   logseq
