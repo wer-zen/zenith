@@ -141,7 +141,6 @@
     enableDefaultPackages = true;
     fontconfig = {
       enable = true;
-      defaultFonts.monospace = ["nerd-fonts.jetbrains-mono"];
     };
     packages = with pkgs; [
       fira-sans

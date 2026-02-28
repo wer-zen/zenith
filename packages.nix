@@ -103,7 +103,6 @@ with pkgs; [
   wl-clipboard-rs
   pay-respects
   go
-  python3
   opencode
   gnome-clocks
   zed-editor
