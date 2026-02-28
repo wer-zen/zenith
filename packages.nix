@@ -2,6 +2,11 @@
 with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
+  android-tools
+  dconf
+  webex
+  pyright
+  ruff
   at-spi2-atk
   atkmm
   cairo
@@ -31,7 +36,6 @@ with pkgs; [
   markdown-oxide
   nil
   jq
-  rembg
   notify-desktop
   # >>DEV<<
   typescript
@@ -44,7 +48,7 @@ with pkgs; [
   prettier
   cmark-gfm
   protobuf
-  greetd.qtgreet
+  qtgreet
   brave
   kdePackages.qt6ct
   kdePackages.qtsvg
@@ -54,6 +58,7 @@ with pkgs; [
   rustlings
   helix
   gnome-keyring
+  gsettings-desktop-schemas
   ollama
   kdePackages.qtshadertools
   cmake
@@ -151,12 +156,9 @@ with pkgs; [
   qt6Packages.qt5compat
   kdePackages.networkmanager-qt
   kdePackages.kirigami
-  libsForQt5.kirigami2
-  libsForQt5.networkmanager-qt
   qt6.qtdeclarative
   qt6.qtmultimedia
   qtcreator
-  qt5.full
   # >>FISH<<
   fishPlugins.done
   fishPlugins.fzf-fish

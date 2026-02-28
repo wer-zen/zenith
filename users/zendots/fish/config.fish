@@ -17,6 +17,8 @@ set -gx EDITOR NVIM_APPNAME=kick nvim
 set -gx PATH ~/.cargo/bin $PATH
 set -x GOPATH $HOME/go
 set -x PATH $PATH $GOPATH/bin
+set -x GTK_FONT "Departure Mono 14"
+set -x GTK_USE_PORTAL 1
 # Initializing shell plugins and tools
 zoxide init fish | source
 oh-my-posh init fish --config /home/zen/.config/ompsh/theme.toml | source

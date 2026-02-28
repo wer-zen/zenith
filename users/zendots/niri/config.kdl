@@ -1,12 +1,3 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
-
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
-
 output "eDP-1" {
 
     scale 1.25
@@ -82,7 +73,7 @@ layout {
 spawn-at-startup "zen-beta"
 spawn-at-startup "equibop"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "qs -c /home/zen/zenflux/Quickshell"
+spawn-at-startup "qs" "-p" "/home/zen/zenflux/Quickshell"
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 

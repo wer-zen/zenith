@@ -29,14 +29,13 @@
       url = "github:scottmckendry/durdraw/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    matugen.url = "github:InioX/Matugen";
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hjem.url = "github:feel-co/hjem";
     quickshell = {
       url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland = {
+      url = "github:hyprwm/hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     affinity-nix.url = "github:mrshmllow/affinity-nix";
@@ -45,10 +44,10 @@
   outputs = {
     self,
     durdraw,
-    stylix,
     nixpkgs,
     nur,
     swiftfetch,
+    hyprland,
     ...
   } @ inputs: {
     nixosConfigurations = {

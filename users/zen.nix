@@ -21,12 +21,6 @@ in {
   };
   imports = [inputs.hjem.nixosModules.default];
 
-  zen.modules = {
-    ricing.matugen.matugen = {
-      enable = true;
-      wallpaper = wallpapers + "/_star_wars.jpg";
-    };
-  };
   programs.fish.enable = true;
   # hjem
   hjem.extraModules = [
@@ -46,9 +40,6 @@ in {
     };
 
     xdg.config.files = let
-      zenflow = inputs.zenflow;
-      matugen = config.zen.modules.ricing.matugen.matugen;
-      matugenTheme = matugen.theme.files;
       dots = config.hjem.users.${username}.impure.dotsDir;
     in {
       # fish
@@ -66,7 +57,6 @@ in {
 
       "helix/config.toml".source = dots + "/helix/config.toml";
       "helix/languages.toml".source = dots + "/helix/languages.toml";
-      "yazi/yazi-theme.toml".source = "${matugenTheme}/yazi-theme.toml";
     };
   };
 }

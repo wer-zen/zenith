@@ -20,6 +20,11 @@
   };
   nixpkgs.config.permittedInsecurePackages = ["qtwebengine-5.15.19" "libsoup-2.74.3"];
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d"; # adjust retention as needed
+  };
   programs.wayfire = {
     enable = true;
     plugins = with pkgs.wayfirePlugins; [
@@ -98,10 +103,6 @@
     XCURSOR_THEME = "Bibata-Modern-Classic";
     XCURSOR_SIZE = "12";
   };
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
 
   xdg.portal = {
     enable = true;
@@ -148,7 +149,7 @@
       roboto
       jetbrains-mono
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       material-symbols
     ];
   };
@@ -209,11 +210,11 @@
   environment.systemPackages = with pkgs; [
     neovim
     ly
-    inputs.matugen.packages.${system}.default
     inputs.zen-browser.packages."${system}".default
     inputs.quickshell.packages."${pkgs.system}".default
     inputs.noctalia.packages.${system}.default
     inputs.affinity-nix.packages.x86_64-linux.v3
+    inputs.hyprland.packages.${system}.default
     bibata-cursors
     foot
   ];
