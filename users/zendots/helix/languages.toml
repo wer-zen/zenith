@@ -1,28 +1,24 @@
+# ~/.config/helix/languages.toml
+
+# ============================================
+# ALL [[language]] SECTIONS FIRST
+# ============================================
+
 [[language]]
 name = "cpp"
+auto-format = true
 language-servers = ["clangd"]
-formatter = ["clangd"]
+# No 'formatter' line - let clangd handle formatting via LSP
 
 [[language]]
 name = "python"
-language-servers = [
-    {name = "pyright"},
-    {name = "ruff"},
-    {name = "mypy"}
-]
-
-[language-server.pyright]
-command = "pyright-langserver"
-args = ["--stdio"]
-
-[language-server.ruff]
-command = "ruff"
-args = ["server"]
+language-servers = [{ name = "pyright" }, { name = "ruff" }, { name = "mypy" }]
 
 [[language]]
 name = "markdown"
 language-servers = ["markdown-oxide"]
-formatter = ["markdown-oxide"]
+formatter = { command = "markdown-oxide", args = ["format"] }
+
 [[language]]
 name = "toml"
 roots = ["."]
@@ -32,30 +28,17 @@ language-servers = ["taplo"]
 name = "nix"
 auto-format = true
 language-servers = ["nil"]
-formatter = ["alejandra"]
-[language-server.gopls]
-command = "gopls"
-args = ["-logfile=/tmp/gopls.log", "serve"]
-[language-server.gopls.config]
-"ui.diagnostic.staticcheck" = true
+formatter = { command = "alejandra" }
 
 [[language]]
 name = "go"
 auto-format = true
-language-servers = ["qmlls"]
-
-[language-server.qmlls]
-command = "qmlls"
+language-servers = ["gopls"]
 
 [[language]]
 name = "qml"
 auto-format = true
 language-servers = ["qmlls"]
-
-[language-server.tailwindcss-ls]
-
-command = "tailwindcss-language-server"
-args = ["--stdio"]
 
 [[language]]
 name = "html"
@@ -76,6 +59,35 @@ language-servers = ["typescript-language-server", "tailwindcss-ls"]
 [[language]]
 name = "svelte"
 language-servers = ["svelteserver", "tailwindcss-ls"]
+
+# ============================================
+# ALL [language-server] SECTIONS AFTER
+# ============================================
+
+[language-server.clangd]
+command = "clangd"
+args = ["--background-index", "--clang-tidy"]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.gopls]
+command = "gopls"
+args = ["-logfile=/tmp/gopls.log", "serve"]
+[language-server.gopls.config]
+"ui.diagnostic.staticcheck" = true
+
+[language-server.qmlls]
+command = "qmlls"
+
+[language-server.tailwindcss-ls]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
 
 [language-server.rust-analyzer.config.check]
 command = "clippy"

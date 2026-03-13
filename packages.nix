@@ -2,35 +2,16 @@
 with pkgs; [
   # >>"Hello, world!" when run.<<
   hello
-  android-tools
-  dconf
-  webex
-  pyright
-  ruff
-  at-spi2-atk
-  atkmm
-  cairo
-  gdk-pixbuf
-  glib
-  gtk3
-  harfbuzz
-  librsvg
-  libsoup_3
-  pango
-  webkitgtk_4_1
-  openssl
-  pkg-config
-  trunk
-  cargo-tauri
-  zip
-  vencord
+  appimage-run
+  pnpm
+  fontforge
+  aider-chat
   cargo-generate
   clang-tools
   rust-analyzer
   anki-bin
-  discord
-  discordo
   just
+  spotify
   inotify-tools
   alejandra
   markdown-oxide
@@ -48,17 +29,24 @@ with pkgs; [
   prettier
   cmark-gfm
   protobuf
-  qtgreet
   brave
-  kdePackages.qt6ct
-  kdePackages.qtsvg
-  kdePackages.qtkeychain
-  kdePackages.layer-shell-qt
+  qt6.qtbase
+  qt6.qtsvg
+  qt6.qttools
+  qt6.qtwayland
+  qt6.qtdeclarative
+  qt6.qtimageformats
+  kdePackages.qtmultimedia
+  kdePackages.qtshadertools
+  kdePackages.syntax-highlighting
+  mesa
+  libglvnd
+  egl-wayland
+  wayland
   rapidfuzz-cpp
   rustlings
   helix
   gnome-keyring
-  gsettings-desktop-schemas
   ollama
   kdePackages.qtshadertools
   cmake
@@ -68,8 +56,6 @@ with pkgs; [
   nurl
   neofetch
   zathura
-  zathuraPkgs.zathura_core
-  zathuraPkgs.zathura_pdf_mupdf
   os-prober
   gcc
   logseq
@@ -103,11 +89,11 @@ with pkgs; [
   wl-clipboard-rs
   pay-respects
   go
+  python3
   opencode
   gnome-clocks
   zed-editor
   gnome-calculator
-  kitty
   foot
   oh-my-posh
   tmux
@@ -149,15 +135,6 @@ with pkgs; [
   clock-rs
   gpu-screen-recorder
   # >>QUICKSHILL - QT PACKAGES THAT MIGHT USE WEBKIT<<
-  kdePackages.qtbase
-  kdePackages.qtdeclarative
-  kdePackages.qtmultimedia
-  qt6Packages.qt5compat
-  kdePackages.networkmanager-qt
-  kdePackages.kirigami
-  qt6.qtdeclarative
-  qt6.qtmultimedia
-  qtcreator
   # >>FISH<<
   fishPlugins.done
   fishPlugins.fzf-fish

@@ -19,10 +19,6 @@
   };
   nixpkgs.config.permittedInsecurePackages = ["qtwebengine-5.15.19" "libsoup-2.74.3"];
 
-  environment.variables = {
-    EDITOR = "hx";
-    VISUAL = "hx";
-  };
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -91,6 +87,7 @@
 
   security.sudo.wheelNeedsPassword = false;
   programs.nix-ld.enable = true;
+  programs.dconf.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     brotli
     glib
@@ -205,7 +202,6 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.niri.enable = true;
-  programs.hyprland.enable = true;
   services.auto-cpufreq = {enable = true;};
 
   # List packages installed in system profile. To search, run:

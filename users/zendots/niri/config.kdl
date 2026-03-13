@@ -145,6 +145,14 @@ window-rule {
     open-floating true
 }
 window-rule {
+    match app-id="com.mitchellh.ghostty"
+
+    default-window-height { proportion 0.5; }
+    default-column-width { proportion 0.5; }
+
+    open-floating true
+}
+window-rule {
     match app-id="Calculator"
     open-floating true
 }

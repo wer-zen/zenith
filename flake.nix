@@ -2,25 +2,15 @@
   description = "ZenFlow NixOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     hjem-impure.url = "github:Rexcrazy804/hjem-impure";
-    wallpapers = {
-      url = "git+file:///home/zen/Wallpapers";
-      flake = false;
-    };
-
     niri.url = "github:yalter/niri";
     vicinae.url = "github:vicinaehq/vicinae";
     noctalia = {
       url = "github:/noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    swiftfetch = {
-      url = "github:ly-sec/swiftfetch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,10 +24,6 @@
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     affinity-nix.url = "github:mrshmllow/affinity-nix";
   };
 
@@ -46,8 +32,6 @@
     durdraw,
     nixpkgs,
     nur,
-    swiftfetch,
-    hyprland,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -63,6 +47,18 @@
           ./users/zen.nix
         ];
       };
+    };
+    xi = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs;
+        users = ["zen"];
+      };
+
+      modules = [
+        ./hosts/phi/configuration.nix
+        ./modules
+        ./users/zen.nix
+      ];
     };
   };
 }

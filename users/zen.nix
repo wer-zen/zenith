@@ -2,14 +2,12 @@
   inputs,
   pkgs,
   config,
-  sources,
   lib,
   ...
 }: let
   username = "zen";
   description = "To zen or not to Zen";
   flow = import ../packages.nix {inherit pkgs;};
-  wallpapers = inputs.wallpapers;
 in {
   users.users.${username} = {
     inherit description;
