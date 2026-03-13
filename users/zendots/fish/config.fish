@@ -9,7 +9,6 @@ fish_add_path /home/zen/.spicetify
 export OBSIDIAN_USE_WAYLAND=1
 export ZENFLOW_QUICKSHELL="$ZENFLOW_QUICKSHELL:/home/zen/zenflow/quickshell"
 export ZENFLOW_QUICKSHELL="$ZENFLOW_QUICKSHELL:/home/zen/zenflow/quickshell"
-export OLLAMA_API_KEY=555a3cd1a4e448aaa5d3d1a43092d07f.cfUAe-MHaSHiark0PFwMPhoZ
 export PATH="$PATH:/usr/lib/qt6/bin"
 export QT_QPA_PLATFORMTHEME=gtk3
 set -x QS_NO_RELOAD_POPUP 1
