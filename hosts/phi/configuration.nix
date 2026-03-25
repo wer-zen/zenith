@@ -5,14 +5,16 @@
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  vicinae = pkgs.callPackage ./vicinae.nix {};
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
   environment.systemPackages = with pkgs; [
     neovim
-    (callPackage ./vicinae.nix {})
+    vicinae
     ly
     inputs.axctl
     inputs.niri-blur.packages.${pkgs.system}.niri
