@@ -20,7 +20,6 @@ in {
   imports = [inputs.hjem.nixosModules.default];
 
   programs.fish.enable = true;
-  # hjem
   hjem.extraModules = [
     inputs.hjem-impure.hjemModules.default # imports the hjemModule
   ];

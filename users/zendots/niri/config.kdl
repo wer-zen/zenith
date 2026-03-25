@@ -1,10 +1,13 @@
 output "eDP-1" {
 
+    background-color "#00000000"
+    backdrop-color "#00000000"
     scale 1.25
     
 }
 
 output "DP-2" {
+    background-color "#00000000"
      scale 1
 }
 input {
@@ -91,6 +94,12 @@ window-rule {
 }
 
 window-rule {
+    background-effect {
+        blur false
+    }
+}
+
+window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
@@ -170,7 +179,14 @@ layer-rule {
     place-within-backdrop true
 }
 layer-rule {
+    match namespace="ambxst:wallpaper"
+
+    place-within-backdrop true
+}
+
+layer-rule {
     match namespace="^quickshell"
+
 
     place-within-backdrop true
 }
@@ -198,8 +214,8 @@ binds {
     Mod+W { toggle-overview; }
     Mod+Alt+Z hotkey-overlay-title="Browser" { spawn "zen-beta"; }
     Mod+Alt+K hotkey-overlay-title="Kill quickshell" { spawn "killall" ".quickshell-wra"; }
-    Mod+Return hotkey-overlay-title="Wofi" { spawn "wofi" "--show" "drun";}
-    Mod+Alt+R hotkey-overlay-title="Wofi" { spawn "wofi" "--show" "drun";}
+    Mod+Return hotkey-overlay-title="fuzzel" { spawn "fuzzel";}
+    Mod+S hotkey-overlay-title="fuzzel" { spawn "fuzzel";}
     Mod+D repeat=false hotkey-overlay-title="Run quickshell v2" { spawn "qs" "-p" "/home/zen/zenflux/Quickshell"; }     
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }

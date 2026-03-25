@@ -8,7 +8,6 @@
 name = "cpp"
 auto-format = true
 language-servers = ["clangd"]
-# No 'formatter' line - let clangd handle formatting via LSP
 
 [[language]]
 name = "python"
@@ -43,11 +42,14 @@ language-servers = ["qmlls"]
 [[language]]
 name = "html"
 language-servers = ["vscode-html-language-server", "tailwindcss-ls"]
-
+formatter = [ "prettier" ]
 [[language]]
 name = "css"
 language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
-
+[[language]]
+name = "astro"
+language-servers = ["astro-ls", "tailwindcss-ls"]
+formatter = [ "prettier-plugin-astro" ]
 [[language]]
 name = "jsx"
 language-servers = ["typescript-language-server", "tailwindcss-ls"]
@@ -75,6 +77,9 @@ args = ["--stdio"]
 [language-server.ruff]
 command = "ruff"
 args = ["server"]
+
+[language-server.astro-ls]
+command = "astro-ls"
 
 [language-server.gopls]
 command = "gopls"

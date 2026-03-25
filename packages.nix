@@ -1,35 +1,126 @@
 {pkgs, ...}:
 with pkgs; [
-  # >>"Hello, world!" when run.<<
-  hello
-  appimage-run
-  pnpm
-  fontforge
-  aider-chat
-  cargo-generate
-  clang-tools
-  rust-analyzer
-  anki-bin
+  # >>UTILITIES<<
+  hello # prints "Hello, world!" when run
+  wget
+  unzip
+  killall
+  tree
+  jq
+  bat
+  git
+  nurl
   just
-  spotify
   inotify-tools
+  notify-desktop
+  ps_mem
+  pay-respects
   alejandra
+
+  # >>SYSTEM<<
+  btop
+  mission-center
+  auto-cpufreq
+  powertop
+  powerstat
+  sbctl
+  os-prober
+
+  # >>TERMINALS & MULTIPLEXERS<<
+  ghostty
+  foot
+  tmux
+  zellij
+
+  # >>SHELLS<<
+  nushell
+  fish
+  fishPlugins.done
+  fishPlugins.fzf-fish
+  fishPlugins.forgit
+  fishPlugins.hydro
+  fishPlugins.grc
+  grc
+  oh-my-posh
+
+  # >>NAVIGATION & FILE MANAGEMENT<<
+  fzf
+  zoxide
+  eza
+  yazi
+  tre-command
+  nautilus
+
+  # >>EDITORS & LANGUAGE SERVERS<<
+  helix
+  zed-editor
   markdown-oxide
   nil
-  jq
-  notify-desktop
-  # >>DEV<<
-  typescript
+  gopls
+  lua-language-server
+  rust-analyzer
+  clang-tools
   typescript-language-server
+  astro-language-server
   biome
+
+  # >>DEVELOPMENT<<
+  gcc
+  clang-tools
+  cmake
+  gnumake
+  ninja
+  go
+  python3
+  ruby
+  lua
+  nodejs
+  pnpm
+  yarn
+  bun
   rustup
-  ghostty
+  rustlings
+  cargo-generate
+  typescript
+  protobuf
+  minizip
+  libqalculate
+  fontforge
+
+  # >>DEVTOOLS<<
   gh
-  warp-terminal
+  lazygit
+  aider-chat
+  opencode
   prettier
   cmark-gfm
-  protobuf
+
+  # >>JAVA<<
+  zulu25
+
+  # >>BROWSERS<<
+  qutebrowser
   brave
+  chawan
+
+  # >>LAUNCHERS<<
+  fuzzel
+  wofi
+
+  # >>WAYLAND & DISPLAY<<
+  wayland
+  egl-wayland
+  mesa
+  libglvnd
+  wl-clipboard-rs
+  hyprpicker
+  hyprshot
+  grim
+  slurp
+  swww
+  hyprlock
+
+  # >>QT<<
   qt6.qtbase
   qt6.qtsvg
   qt6.qttools
@@ -39,109 +130,54 @@ with pkgs; [
   kdePackages.qtmultimedia
   kdePackages.qtshadertools
   kdePackages.syntax-highlighting
-  mesa
-  libglvnd
-  egl-wayland
-  wayland
   rapidfuzz-cpp
-  rustlings
-  helix
-  gnome-keyring
-  ollama
-  kdePackages.qtshadertools
-  cmake
-  ninja
-  minizip
-  libqalculate
-  nurl
-  neofetch
-  zathura
-  os-prober
-  gcc
-  logseq
-  playerctl
-  git
-  gnome-calendar
-  ruby
-  vlc
-  scrcpy
-  brightnessctl
+
+  # >>NOTIFICATIONS<<
+  swaynotificationcenter
+
+  # >>THEMING & CUSTOMIZATION<<
   wallust
-  nodejs
-  vue
-  ruby
-  ps_mem
-  nodejs
-  cheese
-  vue
-  nushell
-  chawan
-  gnome-font-viewer
-  yarn
-  blueman
-  lua
-  bun
-  lazygit
-  lua-language-server
-  astro-language-server
-  basilk
-  tre-command
-  wl-clipboard-rs
-  pay-respects
-  go
-  python3
-  opencode
-  gnome-clocks
-  zed-editor
-  gnome-calculator
-  foot
-  oh-my-posh
-  tmux
-  zellij
-  yazi
-  equibop
-  eza
-  obsidian
-  # >>MUSIC<<
+  flat-remix-gtk
+  inkscape
+
+  # >>MUSIC & AUDIO<<
   easyeffects
   cava
-  # >>NAVIGATION<<
-  fzf
-  zoxide
-  wofi
-  eza
-  nautilus
-  # >>SYSTEM UTILITIES<<
-  wget
-  mission-center
-  auto-cpufreq
-  btop
-  unzip
-  killall
-  tree
-  bat
-  hyprpicker
-  # >>IDK<<
-  equibop
-  swaynotificationcenter
-  inkscape
-  # >>WALLPAPER & CUSTOMIZATION & SCREENUTILS<<
-  hyprshot
-  grim
-  fastfetch
-  swww
-  hyprlock
-  slurp
-  clock-rs
+
+  # >>SCREENCAST & RECORDING<<
   gpu-screen-recorder
-  # >>QUICKSHILL - QT PACKAGES THAT MIGHT USE WEBKIT<<
-  # >>FISH<<
-  fishPlugins.done
-  fishPlugins.fzf-fish
-  fishPlugins.forgit
-  fishPlugins.hydro
-  fishPlugins.grc
-  fish
-  grc
-  flat-remix-gtk
+
+  # >>MEDIA & VIEWERS<<
+  vlc
+  zathura
+  logseq
+  obsidian
+
+  # >>FONTS<<
+  gnome-font-viewer
+
+  # >>GNOME APPS<<
+  gnome-keyring
+  gnome-calendar
+  gnome-clocks
+  gnome-calculator
+
+  # >>MISC APPS<<
+  anki-bin
+  appimage-run
+  scrcpy
+  cheese
+  protonmail-desktop
+  equibop
+  brightnessctl
+  playerctl
+  basilk
+  ollama
+
+  # >>TERMINAL EYE CANDY<<
+  fastfetch
+  lavat
+  asciiquarium-transparent
+  cmatrix
+  clock-rs
 ]

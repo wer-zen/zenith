@@ -10,6 +10,19 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+  environment.systemPackages = with pkgs; [
+    neovim
+    (callPackage ../../modules/vicinae.nix {})
+    ly
+    inputs.axctl
+    inputs.niri-blur.packages.${pkgs.system}.niri
+    inputs.zen-browser.packages."${system}".default
+    inputs.quickshell.packages."${pkgs.system}".default
+    inputs.noctalia.packages.${system}.default
+    inputs.affinity-nix.packages.x86_64-linux.v3
+    bibata-cursors
+    foot
+  ];
   services.openssh = {
     enable = true;
     settings = {
@@ -18,7 +31,7 @@
     };
   };
   nixpkgs.config.permittedInsecurePackages = ["qtwebengine-5.15.19" "libsoup-2.74.3"];
-
+  programs.dconf.enable = true;
   environment.variables = {
     EDITOR = "hx";
     VISUAL = "hx";
@@ -40,33 +53,39 @@
   services.auto-cpufreq.settings = {
     battery = {
       governor = "powersave";
+      energy_performance_preference = "power";
       turbo = "never";
     };
     charger = {
       governor = "performance";
+      energy_performance_preference = "performance";
       turbo = "auto";
     };
   };
+  services.udev.extraRules = ''
+    SUBSYSTEM=="power_supply", ACTION=="add", ATTR{type}=="Battery", \
+    ATTR{charge_control_start_threshold}="40", \
+    ATTR{charge_control_end_threshold}="80"
+  '';
+  # services.tlp = {
+  #   enable = true;
+  #   settings = {
+  #     CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  #     CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+  #     CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+  #     CPU_MIN_PERF_ON_AC = 0;
+  #     CPU_MAX_PERF_ON_AC = 100;
+  #     CPU_MIN_PERF_ON_BAT = 0;
+  #     CPU_MAX_PERF_ON_BAT = 20;
 
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 20;
-
-      #Optional helps save long term battery health
-      START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
-      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
-    };
-  };
+  #     #Optional helps save long term battery health
+  #     START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
+  #     STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+  #   };
+  # };
   services.gvfs.enable = true;
   services.xserver = {
     exportConfiguration = true; # link /usr/share/X11/ properly
@@ -86,6 +105,9 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  system.activationScripts.sbctl-sign = ''
+    ${pkgs.sbctl}/bin/sbctl sign -s /boot/EFI/GRUB/grubx64.efi || true
+  '';
   nixpkgs.config.allowUnfree = true;
   services.blueman.enable = true;
 
@@ -204,21 +226,35 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true; # registers upstream niri + its wayland session
+    package = inputs.niri.packages.${pkgs.system}.niri;
+  };
+
+  # Then add the blur variant as an extra session:
+  services.displayManager.sessionPackages = [
+    (pkgs.symlinkJoin {
+      name = "niri-blur-session";
+      paths = [inputs.niri-blur.packages.${pkgs.system}.niri];
+      postBuild = ''
+        mkdir -p $out/share/wayland-sessions
+        # Remove whatever desktop file the blur package ships
+        rm -f $out/share/wayland-sessions/*.desktop
+        # Write our own with a known Name=
+        cat > $out/share/wayland-sessions/niri-blur.desktop <<EOF
+        [Desktop Entry]
+        Name=niri-blur
+        Comment=niri (blur fork)
+        Exec=${inputs.niri-blur.packages.${pkgs.system}.niri}/bin/niri-session
+        Type=Application
+        DesktopNames=niri-blur
+        EOF
+      '';
+      passthru.providedSessions = ["niri-blur"];
+    })
+  ];
   programs.hyprland.enable = true;
   services.auto-cpufreq = {enable = true;};
-
-  # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [
-    neovim
-    ly
-    inputs.zen-browser.packages."${system}".default
-    inputs.quickshell.packages."${pkgs.system}".default
-    inputs.noctalia.packages.${system}.default
-    inputs.affinity-nix.packages.x86_64-linux.v3
-    bibata-cursors
-    foot
-  ];
 
   qt.enable = true;
 
