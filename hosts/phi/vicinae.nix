@@ -14,14 +14,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "vicinae";
-  version = "0.16.9"; # Check https://github.com/vicinaehq/vicinae/releases for latest
+  version = "0.20.8"; # Check https://github.com/vicinaehq/vicinae/releases for latest
 
   src = fetchurl {
-    # v0.1.0 is likely real - check https://github.com/vicinaehq/vicinae/releases
-    version = "0.1.0";
-    url = "https://github.com/vicinaehq/vicinae/releases/download/v${version}/vicinae-${version}-linux-x86_64.tar.gz";
-    sha256 = lib.fakeSha256;
+    url = "https://github.com/vicinaehq/vicinae/releases/download/v0.20.8/vicinae-linux-x86_64-v0.20.8.tar.gz";
+    sha256 = lib.fakeSha256; # Will fail first time - see below
   };
+
   nativeBuildInputs = [autoPatchelfHook];
   buildInputs = with qt6;
     [
