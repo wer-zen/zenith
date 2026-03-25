@@ -12,7 +12,7 @@
   ];
   environment.systemPackages = with pkgs; [
     neovim
-    (callPackage ../../modules/vicinae.nix {})
+    (callPackage ./vicinae.nix {})
     ly
     inputs.axctl
     inputs.niri-blur.packages.${pkgs.system}.niri
