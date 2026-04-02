@@ -11,6 +11,7 @@
   minizip,
   abseil-cpp,
   protobuf,
+  icu,
 }:
 stdenv.mkDerivation rec {
   pname = "vicinae";
@@ -18,10 +19,10 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/vicinaehq/vicinae/releases/download/v0.20.8/vicinae-linux-x86_64-v0.20.8.tar.gz";
-    sha256 = lib.fakeSha256; # Will fail first time - see below
+    sha256 = "sha256-cdynHqMP7C75V2fry6Z5OWSVIssT3ZATspycXau3Mg0=";
   };
 
-  nativeBuildInputs = [autoPatchelfHook];
+  nativeBuildInputs = [autoPatchelfHook qt6.wrapQtAppsHook];
   buildInputs = with qt6;
     [
       qtbase
@@ -32,6 +33,7 @@ stdenv.mkDerivation rec {
     ++ (with kdePackages; [
       layer-shell-qt
       qtkeychain
+      syntax-highlighting
     ])
     ++ [
       openssl
@@ -41,16 +43,29 @@ stdenv.mkDerivation rec {
       stdenv.cc.cc.lib
       abseil-cpp
       protobuf
+      icu
     ];
 
+  autoPatchelfIgnoreMissingDeps = ["libicuuc.so.78"];
+
+  postFixup = ''
+    mkdir -p $out/lib
+    ln -s ${icu}/lib/libicuuc.so.76 $out/lib/libicuuc.so.78
+    ln -s ${icu}/lib/libicudata.so.76 $out/lib/libicudata.so.78
+    ln -s ${icu}/lib/libicui18n.so.76 $out/lib/libicui18n.so.78
+
+    patchelf --add-rpath $out/lib $out/libexec/vicinae/vicinae-server
+    patchelf --add-rpath $out/lib $out/libexec/vicinae/.vicinae-server-wrapped
+  '';
   unpackPhase = "tar -xzf $src --strip-components=1";
   installPhase = ''
-    mkdir -p $out/bin $out/share/applications $out/share/icons
+    mkdir -p $out/bin $out/libexec/vicinae $out/share/applications $out/share/icons
     cp -r bin/* $out/bin/
+    cp -r libexec/* $out/libexec/ 2>/dev/null || true
     cp -r share/* $out/share/ 2>/dev/null || true
     chmod +x $out/bin/vicinae
+    chmod +x $out/libexec/vicinae/vicinae-server 2>/dev/null || true
   '';
-
   meta = with lib; {
     description = "Raycast-like launcher for Linux";
     homepage = "https://github.com/vicinaehq/vicinae";

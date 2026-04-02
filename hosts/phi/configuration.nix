@@ -43,51 +43,24 @@ in {
     dates = "weekly";
     options = "--delete-older-than 7d"; # adjust retention as needed
   };
-  programs.wayfire = {
+  services.tlp = {
     enable = true;
-    plugins = with pkgs.wayfirePlugins; [
-      wcm
-      wf-shell
-      wayfire-plugins-extra
-    ];
-  };
-  powerManagement.powertop.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      energy_performance_preference = "power";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      energy_performance_preference = "performance";
-      turbo = "auto";
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 20;
+
+      START_CHARGE_THRESH_BAT0 = 40;
+      STOP_CHARGE_THRESH_BAT0 = 80;
     };
   };
-  services.udev.extraRules = ''
-    SUBSYSTEM=="power_supply", ACTION=="add", ATTR{type}=="Battery", \
-    ATTR{charge_control_start_threshold}="40", \
-    ATTR{charge_control_end_threshold}="80"
-  '';
-  # services.tlp = {
-  #   enable = true;
-  #   settings = {
-  #     CPU_SCALING_GOVERNOR_ON_AC = "performance";
-  #     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-  #     CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-  #     CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-  #     CPU_MIN_PERF_ON_AC = 0;
-  #     CPU_MAX_PERF_ON_AC = 100;
-  #     CPU_MIN_PERF_ON_BAT = 0;
-  #     CPU_MAX_PERF_ON_BAT = 20;
-
-  #     #Optional helps save long term battery health
-  #     START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
-  #     STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
-  #   };
-  # };
   services.gvfs.enable = true;
   services.xserver = {
     exportConfiguration = true; # link /usr/share/X11/ properly
@@ -98,7 +71,7 @@ in {
   nixpkgs.config.allowUnsupportedSystem = true;
   services.power-profiles-daemon.enable = false;
   systemd.user.units.swaync.enable = true;
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.flatpak.enable = true;
   boot.loader.grub.enable = true;
@@ -156,11 +129,10 @@ in {
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  networking.hostName = "flow"; # Define your hostname.
-  # Enable networking
+  networking.hostName = "flow";
+
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Europe/Rome";
 
   fonts = {
@@ -193,19 +165,12 @@ in {
     LC_TELEPHONE = "it_IT.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-
-  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = false;
   services.displayManager.ly.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -215,46 +180,18 @@ in {
     pulse.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zen = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel"];
   };
 
-  # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = false;
   services.displayManager.autoLogin.user = "zen";
   services.mpd.enable = true;
 
-  # Install firefox.
   programs.firefox.enable = true;
-  programs.niri = {
-    enable = true; # registers upstream niri + its wayland session
-    package = inputs.niri.packages.${pkgs.system}.niri;
-  };
+  programs.niri.enable = true;
 
-  # Then add the blur variant as an extra session:
-  services.displayManager.sessionPackages = [
-    (pkgs.symlinkJoin {
-      name = "niri-blur-session";
-      paths = [inputs.niri-blur.packages.${pkgs.system}.niri];
-      postBuild = ''
-        mkdir -p $out/share/wayland-sessions
-        # Remove whatever desktop file the blur package ships
-        rm -f $out/share/wayland-sessions/*.desktop
-        # Write our own with a known Name=
-        cat > $out/share/wayland-sessions/niri-blur.desktop <<EOF
-        [Desktop Entry]
-        Name=niri-blur
-        Comment=niri (blur fork)
-        Exec=${inputs.niri-blur.packages.${pkgs.system}.niri}/bin/niri-session
-        Type=Application
-        DesktopNames=niri-blur
-        EOF
-      '';
-      passthru.providedSessions = ["niri-blur"];
-    })
-  ];
   programs.hyprland.enable = true;
   services.auto-cpufreq = {enable = true;};
 
